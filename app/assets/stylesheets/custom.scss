@@ -1,0 +1,179 @@
+@import "bootstrap-sprockets"; 
+@import "bootstrap"; 
+
+$text-color_1: #05386B;
+$text-color_2: rgb(9, 89, 169);
+$text-color_3: #EDF5E1;
+$background-color_1: #5CDB95;
+
+header {
+  background-color: $background-color_1;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0px;
+  z-index: 1;
+  .logo {
+    display: flex;
+    align-items: center;
+    width: 100px;
+    text-decoration: none;
+    &_title {
+      font-size: 40px;
+      color: $text-color_1;
+      &:hover {
+        color: $text-color_2;
+      }
+    }
+  }
+  .menu {
+    display: flex;
+    &_item {
+      padding-right: 10px;
+      text-transform: uppercase;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    &_link {
+      color: $text-color_1;
+      font-weight: 600;
+      font-size: 14px;
+      text-align: center;
+      &:hover {
+        color: $text-color_2;
+        text-decoration: none;
+      }
+    }
+    .add_order {
+      padding: 12px;
+      background-color: $text-color_1;
+      border-radius: 10px; 
+      color: $text-color_3;
+      &:hover {
+        background-color: $text-color_2;
+        text-decoration: none;
+      }
+     }
+    &_left {
+      justify-content: flex-start;
+    }
+    &_right {
+      justify-content: flex-end;
+    }
+  }
+}
+
+.presentation {
+  padding-top: 60px;
+  color: $text-color_1;
+  h1 {
+    text-align: center;
+    font-size: 48px;
+  }
+  &_items {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 20px;
+    .item {
+      width: 100%;
+      display: flex;
+      padding: 10px 0;
+    }
+    .text {
+      padding-left: 10px;
+    }
+    .title {
+      font-size: 28px;
+    }
+    .desc {
+      font-size: 16px;
+    }
+  }
+}
+.category {
+  padding-top: 80px;
+  color: $text-color_1;
+  h2 {
+    text-align: center;
+    font-size: 48px;
+  }
+  .items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-top: 20px;
+    .item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100px;
+    }
+    .text {
+      padding-left: 10px;
+    }
+    .title {
+      font-size: 28px;
+    }
+    .desc {
+      font-size: 16px;
+    }
+  }
+}
+.cities {
+  padding-top: 80px;
+  color: $text-color_1;
+  h2 {
+    text-align: center;
+    font-size: 48px;
+  }
+  .items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    padding-top: 20px;
+    .item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100px;
+    }
+    .text {
+      padding-left: 10px;
+    }
+    .title {
+      font-size: 28px;
+    }
+    .desc {
+      font-size: 16px;
+    }
+  }
+}
+
+footer {
+  background-color: $background-color_1;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  color: $text-color_1;
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .social, .links {
+    display: flex;
+    a {
+      padding-right: 10px;
+      font-weight: 600;
+      font-size: 14px;
+      color: $text-color_1;
+      &:hover {
+        color: $text-color_2;
+        text-decoration: none;
+      }
+    }
+  }
+}
