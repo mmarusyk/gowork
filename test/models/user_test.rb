@@ -6,7 +6,9 @@ class UserTest < ActiveSupport::TestCase
                      last_name: 'Mrsk',
                      email: 'user@example.com',
                      city: 'Lviv',
-                     description: 'I am developer. I know HTML, CSS, Bootstrap, Ruby, Java')
+                     description: 'I am developer. I know HTML, CSS, Bootstrap, Ruby, Java',
+                     password: "example",
+                     password_confirmation: "example")
   end
   test 'should be valid' do
     assert @user.valid?
@@ -61,5 +63,13 @@ class UserTest < ActiveSupport::TestCase
     duplicate_user = @user.dup
     @user.save
     assert_not duplicate_user.valid?
+  end
+  test 'password should be present (nonblank)' do
+    @user.password = @user.password_confirmation = ' ' * 6
+    assert_not @user.valid?
+  end
+  test 'password should have a minimum length' do
+    @user.password = @user.password_confirmation = 'a' * 5
+    assert_not @user.valid?
   end
 end
