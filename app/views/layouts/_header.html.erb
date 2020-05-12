@@ -1,0 +1,27 @@
+<header>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <a class="logo" href="/">
+          <div class="logo_img">
+            <%= image_tag('icons/logo.png', alt: "logo_img", class: "logo_img-tag", style: "width:50px;" ) %></div>
+          <div class="logo_title">GoWork</div>
+        </a>
+      </div>
+      <div class="col-md-4">
+        <ul class="menu menu_left">
+          <li class="menu_item"><%= link_to 'Як це працює', '#', class: "menu_link" %></li>
+          <li class="menu_item"><%= link_to 'Про нас', about_path, class: "menu_link" %></li>
+          <li class="menu_item"><%= link_to 'Допомога', help_path, class: "menu_link" %></li>
+        </ul>
+      </div>
+      <div class="col-md-5">
+        <ul class="menu menu_right">
+          <li class="menu_item"><%= link_to 'Увійти', '#', class: "menu_link" %></li>
+          <li class="menu_item"><%= link_to 'Реєстрація', signup_path, class: "menu_link" %></li>
+          <li class="menu_item"><%= link_to 'Додати замовлення', '#', class: "menu_link add_order" %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
