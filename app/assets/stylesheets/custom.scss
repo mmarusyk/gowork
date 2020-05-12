@@ -6,6 +6,14 @@ $text-color_2: rgb(9, 89, 169);
 $text-color_3: #EDF5E1;
 $background-color_1: #5CDB95;
 
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+} 
+
+
+
 header {
   background-color: $background-color_1;
   height: 100px;
@@ -186,6 +194,63 @@ footer {
   }
 }
 
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: $text-color_1;
+  padding-top: 80px;
+  padding-bottom: 40px;
+  .gravatar {
+    margin-right: 10px;
+  }
+  .gravatar_edit
+  {
+    margin-top: 15px;
+  }
+  .name {
+    font-size: 40px;
+    padding-top: 10px;
+  }
+  .email {
+    font-size: 20px;
+    padding-top: 10px;
+  }
+  .city {
+    font-size: 16px;
+    padding-top: 10px
+  }
+  .description {
+    border: 1px solid #aaa;
+    padding-top: 10px;
+    width: 80%;
+  }
+}
+
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+input {
+  height: auto !important;
+}
+
+.signup {
+  padding: 80px 0 40px 0;
+}
+
+
 @media ( max-width: 1200px ) {
   header {
     .logo {
@@ -222,3 +287,17 @@ footer {
     }
   }  
 }
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+} 

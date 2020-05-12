@@ -1,0 +1,11 @@
+<% provide(:title, "#{@user.first_name} #{@user.last_name}")%>
+
+<div class="profile">
+  <span><%= gravatar_for(@user, size: 160) %></span>
+  <h1 class="name"><%= @user.first_name %> <%= @user.last_name %></h1>
+  <div class="email"><%= @user.email %></div>
+  <div class="city"><%= @user.city %></div>
+  <div class="description">
+    <%= @user.description %>
+  </div>
+</div>
