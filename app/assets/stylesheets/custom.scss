@@ -185,3 +185,40 @@ footer {
     }
   }
 }
+
+@media ( max-width: 1200px ) {
+  header {
+    .logo {
+      &_title {
+        font-size: 30px;
+      }
+    }
+    .menu {
+      &_item {
+        padding-right: 6px;
+      }
+      &_link {
+        font-size: 12px;
+        text-align: center;
+      }
+    }
+  }  
+}
+@media ( max-width: 767px ) {
+  header {
+    .logo {
+      &_title {
+        font-size: 20px;
+      }
+    }
+    .menu {
+      &_item {
+        padding-right: 4px;
+      }
+      &_link {
+        font-size: 10px;
+        text-align: center;
+      }
+    }
+  }  
+}
