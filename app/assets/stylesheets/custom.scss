@@ -6,6 +6,14 @@ $text-color_2: rgb(9, 89, 169);
 $text-color_3: #EDF5E1;
 $background-color_1: #5CDB95;
 
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+} 
+
+
+
 header {
   background-color: $background-color_1;
   height: 100px;
@@ -221,6 +229,27 @@ footer {
 }
 
 
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+input {
+  height: auto !important;
+}
+
+.signup {
+  padding: 80px 0 40px 0;
+}
+
 
 @media ( max-width: 1200px ) {
   header {
@@ -259,15 +288,16 @@ footer {
   }  
 }
 
-@mixin box_sizing {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-} 
-.debug_dump {
-  clear: both;
-  float: left;
-  width: 100%;
-  margin-top: 45px;
-  @include box_sizing;
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
 }
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+} 
