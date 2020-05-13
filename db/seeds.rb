@@ -6,7 +6,9 @@ User.create!(
   city: 'Kyiv',
   description: 'Description. I like Rails',
   password: '111111',
-  password_confirmation:'111111')
+  password_confirmation: '111111',
+  admin: true
+)
 
 # Generate a bunch of additional users.
 99.times do |n| name = Faker::Name.name

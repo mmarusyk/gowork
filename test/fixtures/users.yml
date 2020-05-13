@@ -29,6 +29,7 @@ lesia:
   city: Lviv
   description: Something about Lesia
   password_digest: <%= User.digest('password') %>
+  admin: true
 
 <% 30.times do |n| %>
 user_<%= n %>:
