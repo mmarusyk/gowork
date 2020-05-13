@@ -3,4 +3,5 @@ misha:
   last_name: Mrsk
   email: misha@example.com
   city: Ivano-Frankivsk
+  description: Something about me
   password_digest: <%= User.digest('password') %>

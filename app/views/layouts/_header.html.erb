@@ -24,7 +24,7 @@
               <a href="#" class="dropdown-toggle menu_link" data-toggle="dropdown"> Профіль <b class="caret"></b> </a> 
               <ul class="dropdown-menu">
                 <li class="menu_item"><%= link_to "Профіль", current_user %></li>
-                <li class="menu_item"><%= link_to "Налаштування", '#' %></li>
+                <li class="menu_item"><%= link_to "Налаштування", edit_user_path(current_user) %></li>
                 <li class="divider"></li>
                 <li class="menu_item"> <%= link_to "Вийти", logout_path, method: :delete %> </li>
               </ul> 
