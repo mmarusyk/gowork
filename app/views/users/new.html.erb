@@ -1,8 +1,9 @@
 <% provide(:title, 'Реєстрація') %>
-<h1>Реєстрація</h1>
 <div class="signup">
   <div class="row">
-    <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-6 col-md-offset-3">      
+      <h1>Реєстрація</h1>
+
       <%= form_with(model: @user, local: true) do |f| %>
       <%= render 'shared/error_messages' %> 
 
