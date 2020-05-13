@@ -8,18 +8,32 @@
           <div class="logo_title">GoWork</div>
         </a>
       </div>
-      <div class="col-md-4 col-sm-4">
+      <div class="col-md-4 col-sm-9">
         <ul class="menu menu_left">
           <li class="menu_item"><%= link_to 'Як це працює', '#', class: "menu_link" %></li>
           <li class="menu_item"><%= link_to 'Про нас', about_path, class: "menu_link" %></li>
           <li class="menu_item"><%= link_to 'Допомога', help_path, class: "menu_link" %></li>
         </ul>
       </div>
-      <div class="col-md-5 col-sm-5">
+      <div class="col-md-5 col-sm-12">
         <ul class="menu menu_right">
-          <li class="menu_item"><%= link_to 'Увійти', '#', class: "menu_link" %></li>
-          <li class="menu_item"><%= link_to 'Реєстрація', signup_path, class: "menu_link" %></li>
-          <li class="menu_item"><%= link_to 'Додати замовлення', '#', class: "menu_link add_order" %></li>
+          <% if logged_in? %>
+            <li class="menu_item"> <%= link_to 'Користувачі', '#', class: "menu_link" %> </li>
+            <li class="menu_item"> <%= link_to 'Додати замовлення', '#', class: "menu_link" %> </li>
+            <li class= "dropdown menu_item">
+              <a href="#" class="dropdown-toggle menu_link" data-toggle="dropdown"> Профіль <b class="caret"></b> </a> 
+              <ul class="dropdown-menu">
+                <li class="menu_item"><%= link_to "Профіль", current_user %></li>
+                <li class="menu_item"><%= link_to "Налаштування", '#' %></li>
+                <li class="divider"></li>
+                <li class="menu_item"> <%= link_to "Вийти", logout_path, method: :delete %> </li>
+              </ul> 
+            </li>
+            <% else %>
+              <li class="menu_item"><%= link_to 'Увійти', login_path, class: "menu_link" %></li>
+              <li class="menu_item"><%= link_to 'Реєстрація', signup_path, class: "menu_link" %></li>
+              <li class="menu_item"><%= link_to 'Додати замовлення', '#', class: "menu_link add_order" %></li>
+            <% end %>
         </ul>
       </div>
     </div>
