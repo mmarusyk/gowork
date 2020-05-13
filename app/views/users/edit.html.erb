@@ -1,0 +1,14 @@
+<% provide(:title, 'Редагування профілю') %>
+
+<div class="signup">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">      
+      <h1>Редагування профілю</h1>
+      <%= render 'form' %>
+      <div class="gravater_edit">
+        <%= gravatar_for @user %>
+        <a href="https://gravatar.com/emails" target="_blank">Змінити</a>
+      </div>
+    </div>
+  </div>
+</div>
