@@ -5,3 +5,11 @@ misha:
   city: Ivano-Frankivsk
   description: Something about me
   password_digest: <%= User.digest('password') %>
+
+vasia:
+  first_name: Vasia
+  last_name: Pupkin
+  email: vasiaexample@example.com
+  city: Ivano-Frankivsk
+  description: Something about Vasia
+  password_digest: <%= User.digest('password') %>
