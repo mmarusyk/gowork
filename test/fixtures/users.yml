@@ -5,6 +5,7 @@ misha:
   city: Ivano-Frankivsk
   description: Something about me
   password_digest: <%= User.digest('password') %>
+  admin: true
 
 vasia:
   first_name: Vasia
@@ -29,7 +30,6 @@ lesia:
   city: Lviv
   description: Something about Lesia
   password_digest: <%= User.digest('password') %>
-  admin: true
 
 <% 30.times do |n| %>
 user_<%= n %>:
