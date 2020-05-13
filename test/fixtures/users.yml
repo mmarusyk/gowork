@@ -13,3 +13,29 @@ vasia:
   city: Ivano-Frankivsk
   description: Something about Vasia
   password_digest: <%= User.digest('password') %>
+
+ivan:
+  first_name: Ivan
+  last_name: Ivanov
+  email: ivanexample@example.com
+  city: Lviv
+  description: Something about Ivan
+  password_digest: <%= User.digest('password') %>
+
+lesia:
+  first_name: Lesia
+  last_name: Ivanova
+  email: lesiaexample@example.com
+  city: Lviv
+  description: Something about Lesia
+  password_digest: <%= User.digest('password') %>
+
+<% 30.times do |n| %>
+user_<%= n %>:
+  first_name: <%= "User" %>
+  last_name: <%= " #{n}" %>
+  email: <%= "user-#{n}@eexample.com" %>
+  city: <%= "city #{n}" %>
+  description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae sed perferendis libero ducimus optio ipsum. Consectetur, aspernatur? Ipsum quas, vitae recusandae, cupiditate, cum et voluptatum tenetur veniam nisi laboriosam dolore'
+  password_digest: <%= User.digest('password') %>
+<% end %>
