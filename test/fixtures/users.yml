@@ -5,6 +5,9 @@ misha:
   city: Ivano-Frankivsk
   description: Something about me
   password_digest: <%= User.digest('password') %>
+  admin: true
+  activated: true
+  activated_at: <%= Time.zone.now %> 
 
 vasia:
   first_name: Vasia
@@ -13,6 +16,8 @@ vasia:
   city: Ivano-Frankivsk
   description: Something about Vasia
   password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 ivan:
   first_name: Ivan
@@ -21,6 +26,8 @@ ivan:
   city: Lviv
   description: Something about Ivan
   password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 lesia:
   first_name: Lesia
@@ -29,7 +36,8 @@ lesia:
   city: Lviv
   description: Something about Lesia
   password_digest: <%= User.digest('password') %>
-  admin: true
+  activated: true
+  activated_at: <%= Time.zone.now %>
 
 <% 30.times do |n| %>
 user_<%= n %>:
@@ -39,4 +47,6 @@ user_<%= n %>:
   city: <%= "city #{n}" %>
   description: 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae sed perferendis libero ducimus optio ipsum. Consectetur, aspernatur? Ipsum quas, vitae recusandae, cupiditate, cum et voluptatum tenetur veniam nisi laboriosam dolore'
   password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
 <% end %>
