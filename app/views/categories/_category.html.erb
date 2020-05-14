@@ -1,0 +1,13 @@
+<li id="category-<%= category.id %>">
+<span class="title">
+  <%= category.title %>
+</span>
+<span class="description">
+  <%= category.description %>
+</span>
+<span class="timestamp">
+  Створено: <%= category.created_at %> </span>
+  <% if logged_admin? %> 
+    <%= link_to "Видалити", category, method: :delete, data: { confirm: "Ти впевнений?" } %>
+  <% end %> 
+</li>

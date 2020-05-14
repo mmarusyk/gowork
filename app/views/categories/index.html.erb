@@ -1,0 +1,10 @@
+<% provide(:title, 'Всі категорії') %>
+<h1>Всі категорії</h1>
+<%= link_to 'Додати категорію', new_category_path, class: "menu_link" %>
+<%= will_paginate%>
+
+<ul class="categories">
+  <%= render @categories%>
+</ul>
+
+<%= will_paginate%>
