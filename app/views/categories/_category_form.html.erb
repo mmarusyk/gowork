@@ -1,0 +1,14 @@
+<%= form_with(model: @category, local: true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+<div class="field">
+  <%= f.label :title, 'Назва' %>
+  <%= f.text_field :title %>
+</div>
+
+<div class="field">
+  <%= f.label :description, 'Опис' %>
+  <%= f.text_area :description %>
+</div>
+
+<%= f.submit "Створити", class: "btn btn-primary" %>
+<% end %>

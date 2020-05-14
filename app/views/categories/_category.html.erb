@@ -1,0 +1,25 @@
+<li id="category-<%= category.id %>">
+
+  
+    
+  
+</li>
+<li>
+  <div class="item">
+    <div class="text">
+      <span class="title">
+        <%= category.title %>
+      </span>
+      <span class="description">
+        <%= category.description %>
+      </span>
+      <span class="timestamp">
+        Створено: <%= category.created_at %> </span>
+    </div>
+    <% if logged_admin? %> 
+    <div class="buttons">
+      <%= link_to "Видалити", category, method: :delete, data: { confirm: "Ти впевнений?" }, class: "btn btn-danger" %>
+    </div>
+    <% end %> 
+  </div>
+</li>
