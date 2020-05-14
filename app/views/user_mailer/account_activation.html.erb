@@ -1,0 +1,4 @@
+<h1>GoWork Application/h1>
+<p>Привіт <%= @user.first_name %>,</p>
+<p> Вітаю на goWork! Перейди нижче за посиланням для активації аккаунту: </p>
+<%= link_to "Activate", edit_account_activation_url(@user.activation_token, email: @user.email) %>

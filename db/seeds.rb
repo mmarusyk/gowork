@@ -7,11 +7,14 @@ User.create!(
   description: 'Description. I like Rails',
   password: '111111',
   password_confirmation: '111111',
-  admin: true
+  admin: true,
+  activated: true,
+  activated_at: Time.zone.now
 )
 
 # Generate a bunch of additional users.
-99.times do |n| name = Faker::Name.name
+99.times do |n|
+  name = Faker::Name.name
   email = "example-#{n+1}@e.e"
   password = "password"
   cities = %w[Івано-Франкіськ Вінниця Дніпро Житомир Запоріжжя Київ Кропивницький Луцьк Львів Миколаїв Одеса Полтава Рівне Суми Тернопіль Ужгород Харків Херсон Хмельницький Черкаси Чернівці Черкаси]
@@ -23,6 +26,8 @@ User.create!(
     city: cities.sample,
     description: description,
     password: password,
-    password_confirmation: password
+    password_confirmation: password,
+    activated: true,
+    activated_at: Time.zone.now
   )
 end
