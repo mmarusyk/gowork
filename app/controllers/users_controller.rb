@@ -4,11 +4,13 @@ class UsersController < ApplicationController
   before_action :admin_user, only: :destroy
 
   def index
-    @users = User.paginate(page: params[:page])
+    # @users = User.paginate(page: params[:page])
+    @users = User.where(activated: true).paginate(page: params[:page])
   end
 
   def show
     @user = User.find(params[:id])
+    redirect_to root_url && return unless User.where(activated: true)
   end
 
   def new
@@ -18,8 +20,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      UserMailer.account_activation(@user).deliver_now
-      flash[:info] = 'Перевірь пошту для активації аккаунту'
+      @user.send_activation_email
+      flash[:info] = 'Перевір пошту для активації аккаунту'
       redirect_to root_url
     else
       render 'new'
@@ -72,6 +74,7 @@ class UsersController < ApplicationController
   end
 
   private
+
     def admin_user
       redirect_to(root_url) unless current_user.admin?
     end
