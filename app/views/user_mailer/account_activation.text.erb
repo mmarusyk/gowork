@@ -1,0 +1,3 @@
+Привіт <%= @user.first_name %>,
+Вітаю на goWork! Перейди нижче за посиланням для активації аккаунту:
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
