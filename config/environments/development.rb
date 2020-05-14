@@ -41,13 +41,14 @@ Rails.application.configure do
   host = 'localhost:3000'
   config.action_mailer.default_url_options = { host: host }
   config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
-    port:                 587,
+    address:              'smtp.ukr.net',
+    port:                 2525,
     domain:               'example.com',
-    user_name:            'misha.marusyk@gmail.com',
-    password:             'GOW2020!',
+    user_name:            'goworkgo@ukr.net',
+    password:             '9gQWSa7cFUlexqtx',
     authentication:       'plain',
-    enable_starttls_auto: true
+    enable_starttls_auto: true,
+    ssl: true
   }
 
   config.action_mailer.perform_caching = false
