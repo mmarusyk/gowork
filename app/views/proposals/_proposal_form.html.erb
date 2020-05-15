@@ -1,0 +1,17 @@
+
+<%= form_with(model: @proposal, local: true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  
+  <%= f.label :content, 'Повідомлення' %>
+  <%= f.text_area :content %>
+
+  <%= f.label :duedate, 'Дата завершення' %>
+  <%= f.date_field :duedate, class: 'form-control'  %>
+
+  <%= f.label :price, 'Ціна' %>
+  <%= f.text_field :price %>
+
+  <%= f.hidden_field :order_id %>
+
+  <%= f.submit "Створити", class: "btn btn-success" %>
+<% end %>
