@@ -1,6 +1,8 @@
 @import "bootstrap-sprockets"; 
 @import "bootstrap"; 
 
+
+
 $text-color_1: #05386B;
 $text-color_2: rgb(9, 89, 169);
 $text-color_3: #EDF5E1;
@@ -13,11 +15,11 @@ $border_1: #aaa;
   box-sizing: border-box;
 } 
 
-
+@import "orders";
 
 header {
   background-color: $background-color_1;
-  height: 100px;
+  height: 80px;
   display: flex;
   align-items: center;
   position: sticky;

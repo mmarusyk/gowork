@@ -1,28 +1,48 @@
 <% provide(:title, "#{@order.title}")%>
 
-<div class="order">
-  <div class="text">
+<div class="order-more">
+  <div class="row">
+    <div class="col-md-8 col-sm-8">
       <span class="title">
         <%= @order.title %>
       </span>
+    </div>
+    <div class="col-md-4 col-sm-4">
       <span class="price">
-        <%= @order.price %>
+        <%= @order.price %> ₴
       </span>
-      <span class="description">
-        <%= @order.description %>
-      </span
-      ><span class="skills">
-        <%= @order.skills %>
-      </span>
-      <span class="city"> 
-        <b>Місто:</b> <%= @order.city %>
-      </span>
-      <span class="timestamp"> 
-        <b>Створено:</b> <%= @order.created_at %>
-      </span>
-      <span class="timestamp"> 
-        <b>Завершується:</b> <%= @order.duedate %>
-      </span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="data">
+        <div class="labell">
+          Опис
+        </div>
+        <div class="description">
+          <%= @order.description %>
+        </div>
+        <div class="labell">
+          Навички
+        </div>
+        <div class="skills">
+          <%= @order.skills %>
+        </div>
+      </div>
+      <div class="extended-data">
+        <span class="item"> 
+          <b>Місто:</b> <%= @order.city %>
+        </span>
+        <span class="item"> 
+          <b>Створено:</b> <%= @order.created_at %>
+        </span>
+        <span class="item"> 
+          <b>Завершується:</b> <%= @order.duedate %>
+        </span>
+      </div>
+    </div>
+  </div>
+      
     </div>
     <div class="menu">
       <% if current_user?(@order.user) || current_user.admin? %> 

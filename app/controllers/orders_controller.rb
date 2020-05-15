@@ -26,14 +26,22 @@ class OrdersController < ApplicationController
   end
 
   def edit
-    @order = current_user.orders.find_by(id: params[:id])
+    if current_user.admin?
+      @order = Order.find_by(id: params[:id])
+    else
+      @order = current_user.orders.find_by(id: params[:id])
+    end
   end
 
   def update
-    @order = current_user.orders.find_by(id: params[:id])
+    if current_user.admin?
+      @order = Order.find_by(id: params[:id])
+    else
+      @order = current_user.orders.find_by(id: params[:id])
+    end
     if @order.update(order_params)
       flash[:success] = 'Дані замовлення оновлено'
-      redirect_to orders_url(current_user)
+      redirect_to order_url
     else
       render 'edit'
     end
