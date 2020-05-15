@@ -320,16 +320,15 @@ input {
   }
 }
 
-.userorders {
-  .orders {
-    padding: 10px;
+.orders {
+  .items {
+    padding: 20px 0 10px 0;
     .order {
       margin-bottom: 10px;
       padding-bottom: 10px;
       display: flex;
       border-bottom: 1px solid $border_1;
-    }
-    .gravatar-div {
+      .gravatar-div {
       display: flex;
       align-items: center;
       width: 200px;
@@ -352,6 +351,18 @@ input {
         padding-left: 10px;
         padding-right: 10px;
       }
+    }
+    .buttons {
+      height: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: end;
+      .btn {
+        width: 100%;
+        margin-top: 5px;
+      }
+    } 
     }
   }
 }

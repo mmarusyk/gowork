@@ -1,35 +1,44 @@
 <% provide(:title, 'Мої замовлення') %>
 
 
-<div class="userorders">
-<h1>Мої замовлення</h1>
-
-<%= link_to 'Додати замовлення', new_order_path, class: "btn-lg btn-success button_class" %>
+<div class="orders">
+  <h1>Мої замовлення</h1>
+  <%= link_to 'Додати замовлення', new_order_path, class: "btn-lg btn-success button_class" %>
 
 <%= will_paginate @orders%>
-<ul class="orders"></ul>
+
+<ul class="items">
   <% @orders.each do |order| %>
   <li id="order-<%= order.id %>" class="order">
-    <div class="text">
-      <span class="title">
-        <%= link_to order.title, order %>
-      </span>
-      <span class="city"> 
-        <b>Місто:</b> <%= order.city %>
-      </span>
-      <span class="timestamp"> 
-        <b>Створено:</b> <%= order.created_at %>
-      </span>
-      <span class="timestamp"> 
-        <b>Завершується:</b> <%= order.duedate %>
-      </span>
+    <div class="row">
+      <div class="col-md-10">
+        <div class="text">
+          <span class="title">
+            <%= link_to order.title, order %>
+          </span>
+          <span class="city"> 
+            <b>Місто:</b> <%= order.city %>
+          </span>
+          <span class="timestamp"> 
+            <b>Створено:</b> <%= order.created_at %>
+          </span>
+          <span class="timestamp"> 
+            <b>Завершується:</b> <%= order.duedate %>
+          </span>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <% if current_user?(order.user) %> 
+          <div class="buttons">
+            <%= link_to "Видалити", order, method: :delete, data: { confirm: "Ти впевнений?" }, class: "btn btn-danger" %>
+            <%= link_to "Редагувати", edit_order_path, class: "btn btn-warning" %>
+          </div>
+        <%end%>
+      </div>
     </div>
-    <div class="buttons">
-    <% if current_user?(order.user) %> 
-  <%= link_to "Видалити", order, method: :delete, data: { confirm: "Ти впевнений?" }, class: "btn btn-danger" %><%end%>
-</div>
-    </li>
+  </li>
   <% end %>
 </ul>
+
 <%= will_paginate @orders%>
 </div>

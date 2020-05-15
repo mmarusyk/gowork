@@ -5,6 +5,15 @@
       <span class="title">
         <%= @order.title %>
       </span>
+      <span class="price">
+        <%= @order.price %>
+      </span>
+      <span class="description">
+        <%= @order.description %>
+      </span
+      ><span class="skills">
+        <%= @order.skills %>
+      </span>
       <span class="city"> 
         <b>Місто:</b> <%= @order.city %>
       </span>
@@ -14,5 +23,13 @@
       <span class="timestamp"> 
         <b>Завершується:</b> <%= @order.duedate %>
       </span>
+    </div>
+    <div class="menu">
+      <% if current_user?(@order.user) || current_user.admin? %> 
+      <div class="buttons">
+        <%= link_to "Видалити", @order, method: :delete, data: { confirm: "Ти впевнений?" }, class: "btn btn-danger" %>
+        <%= link_to "Редагувати", edit_order_path, class: "btn btn-warning" %>
+      </div>
+        <%end%>
     </div>
 </div>

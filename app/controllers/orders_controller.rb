@@ -1,7 +1,6 @@
 class OrdersController < ApplicationController
   before_action :logged_in_user, only: %i[create destroy]
-  before_action :correct_user, only: :destroy
-  before_action :admin_user, only: :destroy
+  before_action :correct_user, only: %i[destroy edit update]
 
   def index
     @orders = Order.paginate(page: params[:page])
@@ -23,6 +22,20 @@ class OrdersController < ApplicationController
     else
       @feed_items = current_user.feed.paginate(page: params[:page])
       render 'static_pages/home'
+    end
+  end
+
+  def edit
+    @order = current_user.orders.find_by(id: params[:id])
+  end
+
+  def update
+    @order = current_user.orders.find_by(id: params[:id])
+    if @order.update(order_params)
+      flash[:success] = 'Дані замовлення оновлено'
+      redirect_to orders_url(current_user)
+    else
+      render 'edit'
     end
   end
 
@@ -49,6 +62,11 @@ class OrdersController < ApplicationController
       :price
     )
   end
+
+  # def correct_user
+  #   @order = current_user.orders.find_by(id: params[:id])
+  #   redirect_to orders_url(current_user) if @order.nil?
+  # end
 
   def correct_user
     if current_user.admin?
