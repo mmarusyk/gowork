@@ -1,15 +1,16 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: %i[index edit update destroy]
-  before_action :correct_user, only: %i[edit update]
+  before_action :logged_in_user, only: %i[index edit update destroy orders]
+  before_action :correct_user, only: %i[edit update orders]
   before_action :admin_user, only: :destroy
 
   def index
-    @users = User.paginate(page: params[:page])
-    # @users = User.where(activated: true).paginate(page: params[:page])
+    # @users = User.paginate(page: params[:page])
+    @users = User.where(activated: true).paginate(page: params[:page])
   end
 
   def show
     @user = User.find(params[:id])
+    @orders = @user.orders.paginate(page: params[:page]) 
     redirect_to root_url && return unless User.where(activated: true)
   end
 
@@ -42,16 +43,18 @@ class UsersController < ApplicationController
     end
   end
 
-  def correct_user
-    @user = User.find(params[:id])
-    redirect_to(root_url) unless current_user?(@user)
-  end
-
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = 'Користувача видалено'
     redirect_to users_url
   end
+
+  def orders
+    @user = User.find(params[:id])
+    @orders = @user.orders.paginate(page: params[:page], per_page: 20)
+  end
+
+  private
 
   def user_params
     params.require(:user).permit(
@@ -65,10 +68,12 @@ class UsersController < ApplicationController
     )
   end
 
-  private
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless current_user?(@user)
+  end
 
   def admin_user
     redirect_to(root_url) unless current_user.admin?
   end
-
 end

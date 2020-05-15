@@ -17,4 +17,5 @@ class CategoryTest < ActiveSupport::TestCase
     @category.title = ' '
     assert_not @category.valid?
   end
+
 end
