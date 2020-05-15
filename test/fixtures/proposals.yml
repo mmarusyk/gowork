@@ -4,12 +4,14 @@ one:
   content: MyText
   price: 9.99
   duedate: 2020-05-15 18:31:13
-  user: one
+  user: misha
   order: one
+  created_at: <%= 10.minutes.ago %> 
 
-two:
+most_recent:
   content: MyText
   price: 9.99
   duedate: 2020-05-15 18:31:13
-  user: two
-  order: two
+  user: misha
+  order: one
+  created_at: <%= Time.zone.now %>

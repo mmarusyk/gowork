@@ -62,4 +62,17 @@ class OrderTest < ActiveSupport::TestCase
   test 'order should be most recent first' do
     assert_equal orders(:most_recent), Order.first
   end
+
+  test 'assocoated proposals should be destroyed' do
+    @user.save
+    @user.proposals.create!(
+      content: 'To Do it very quick',
+      price: 2000.50,
+      duedate: '11.07.2020',
+      order_id: @order.id
+    )
+    assert_difference 'Proposal.count', -1 do
+      @order.destroy
+    end
+  end
 end

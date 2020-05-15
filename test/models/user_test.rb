@@ -12,6 +12,7 @@ class UserTest < ActiveSupport::TestCase
       password_confirmation: 'example'
     )
     @category = categories(:cars)
+    @order = orders(:one)
   end
   test 'should be valid' do
     assert @user.valid?
@@ -91,6 +92,19 @@ class UserTest < ActiveSupport::TestCase
       category_id: @category.id
     )
     assert_difference 'Order.count', -1 do
+      @user.destroy
+    end
+  end
+
+  test 'assocoated proposals should be destroyed' do
+    @user.save
+    @user.proposals.create!(
+      content: 'To Do it very quick',
+      price: 2000.50,
+      duedate: '11.07.2020',
+      order_id: @order.id
+    )
+    assert_difference 'Proposal.count', -1 do
       @user.destroy
     end
   end
