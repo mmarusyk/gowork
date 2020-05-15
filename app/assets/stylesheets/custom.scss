@@ -1,6 +1,8 @@
 @import "bootstrap-sprockets"; 
 @import "bootstrap"; 
 
+
+
 $text-color_1: #05386B;
 $text-color_2: rgb(9, 89, 169);
 $text-color_3: #EDF5E1;
@@ -13,11 +15,11 @@ $border_1: #aaa;
   box-sizing: border-box;
 } 
 
-
+@import "orders";
 
 header {
   background-color: $background-color_1;
-  height: 100px;
+  height: 80px;
   display: flex;
   align-items: center;
   position: sticky;
@@ -320,16 +322,15 @@ input {
   }
 }
 
-.userorders {
-  .orders {
-    padding: 10px;
+.orders {
+  .items {
+    padding: 20px 0 10px 0;
     .order {
       margin-bottom: 10px;
       padding-bottom: 10px;
       display: flex;
       border-bottom: 1px solid $border_1;
-    }
-    .gravatar-div {
+      .gravatar-div {
       display: flex;
       align-items: center;
       width: 200px;
@@ -352,6 +353,18 @@ input {
         padding-left: 10px;
         padding-right: 10px;
       }
+    }
+    .buttons {
+      height: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: end;
+      .btn {
+        width: 100%;
+        margin-top: 5px;
+      }
+    } 
     }
   }
 }
