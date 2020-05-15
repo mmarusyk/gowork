@@ -1,3 +1,38 @@
-// Place all the styles related to the Proposals controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+$text-color_1: #05386B;
+$text-color_2: rgb(9, 89, 169);
+$text-color_3: #EDF5E1;
+$background-color_1: #5CDB95;
+$border_1: #aaa;
+
+.proposals {
+  color: $text-color_1;
+  .items {
+    .item {
+      margin: 10px 10px;
+      border-bottom: 1px solid $border_1;
+      padding-bottom: 10px;
+      .text {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: 10px;
+        .user {
+          width: 100%;
+          font-size: 20px;
+          &_link {
+            color: $text-color_1;
+            &:hover {
+              color: $text-color_2;
+            }
+          }
+        }
+      }
+      .data {
+        display: flex;
+        flex-wrap: wrap;
+        .element {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

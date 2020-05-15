@@ -43,13 +43,25 @@
     </div>
   </div>
       
-    </div>
-    <div class="menu">
+</div>
+<div class="menu">
       <% if current_user?(@order.user) || current_user.admin? %> 
       <div class="buttons">
         <%= link_to "Видалити", @order, method: :delete, data: { confirm: "Ти впевнений?" }, class: "btn btn-danger" %>
         <%= link_to "Редагувати", edit_order_path, class: "btn btn-warning" %>
       </div>
         <%end%>
-    </div>
+</div>
+<div class="proposals">
+      <div class="row">
+        <div class="col-md-12">
+          <% if @order.proposals.any? %>
+            <h3>Пропозиції  (<%= @order.proposals.count %>)</h3>
+            <ol class="items">
+              <%= render @proposals %>
+            </ol>
+            <%= will_paginate @proposals %> 
+          <% end %>
+        </div>
+      </div>
 </div>

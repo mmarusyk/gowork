@@ -1,0 +1,53 @@
+<li id="proposal-<%= proposal.id %>" class="item">
+  <div class="row">
+    <div class="col-md-1">
+      <div class="gravatar-div">
+        <%= link_to gravatar_for(proposal.user, size: 80), proposal.user %>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="text">
+        <span class="user">
+          <%= link_to "#{proposal.user.first_name} #{proposal.user.last_name}", proposal.user, class: "user_link" %>
+        </span> 
+        <span class="content">
+          <%= proposal.content %>
+        </span>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="data">
+        <span class="element"> 
+          <b>Ціна:</b> <%= proposal.price %>
+        </span>
+        <span class="element"> 
+          <b>Створено:</b> <%= proposal.created_at %>
+        </span>
+        <span class="element"> 
+          <b>Завершить до:</b> <%= proposal.duedate %>
+        </span>
+        <div class="buttons">
+          <% if current_user && (current_user?(proposal.user) || current_user.admin?) %> 
+            <%# <%= link_to "Видалити", proposal, method: :delete, data: { confirm: "Ти впевнений?" }, class: "btn btn-danger" %>
+            <%# <%= link_to "Редагувати", proposal, method: :edit, class: "btn btn-warning" %>
+          <% end %>
+          <% if current_user && (current_user?(@order.user) || current_user.admin?) %>
+            <%= link_to "Вибрати", "#", class: "btn btn-primary"%>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</li> 
+
+<div class="row">
+  <div class="col-md-1">
+
+  </div>
+  <div class="col-md-8">
+
+  </div>
+  <div class="col-md-3">
+    
+  </div>
+</div>

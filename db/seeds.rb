@@ -46,7 +46,7 @@ end
 
 # Generate orders for a subset of users.
 users = User.order(:created_at).take(6)
-
+orders = []
 2.times do
   title = Faker::Lorem.sentence(word_count: 4)
   description = Faker::Lorem.sentence(word_count: 150)
@@ -55,13 +55,29 @@ users = User.order(:created_at).take(6)
   duedate = Faker::Time.forward(days: 30)
   category_id = categories.sample
   price = Faker::Number.between(from: 100.0, to: 10000.0).round(2)
-  users.each { |user| user.orders.create!(
+  users.each { |user| 
+    order = user.orders.create!(
     title: title,
     description: description,
     skills: skills,
     city: city,
     duedate: duedate,
     category_id: category_id,
+    price: price
+    )
+    orders.push order.id
+  }
+end
+
+2.times do
+  content = Faker::Lorem.sentence(word_count: 150)
+  duedate = Faker::Time.forward(days: 30)
+  order_id = orders.sample
+  price = Faker::Number.between(from: 100.0, to: 10000.0).round(2)
+  users.each { |user| user.proposals.create!(
+    content: content,
+    duedate: duedate,
+    order_id: order_id,
     price: price
     )
   }

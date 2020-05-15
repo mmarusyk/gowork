@@ -8,6 +8,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @proposals = @order.proposals.paginate(page: params[:page])
   end
 
   def new
