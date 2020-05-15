@@ -1,0 +1,18 @@
+<% provide(:title, "#{@order.title}")%>
+
+<div class="order">
+  <div class="text">
+      <span class="title">
+        <%= @order.title %>
+      </span>
+      <span class="city"> 
+        <b>Місто:</b> <%= @order.city %>
+      </span>
+      <span class="timestamp"> 
+        <b>Створено:</b> <%= @order.created_at %>
+      </span>
+      <span class="timestamp"> 
+        <b>Завершується:</b> <%= @order.duedate %>
+      </span>
+    </div>
+</div>

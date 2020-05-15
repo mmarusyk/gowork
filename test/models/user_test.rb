@@ -2,13 +2,16 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   def setup
-    @user = User.new(first_name: 'Misha',
-                     last_name: 'Mrsk',
-                     email: 'user@example.com',
-                     city: 'Lviv',
-                     description: 'I am developer. I know HTML, CSS, Bootstrap, Ruby, Java',
-                     password: "example",
-                     password_confirmation: "example")
+    @user = User.new(
+      first_name: 'Misha',
+      last_name: 'Mrsk',
+      email: 'user@example.com',
+      city: 'Lviv',
+      description: 'I am developer. I know HTML, CSS, Bootstrap, Ruby, Java',
+      password: 'example',
+      password_confirmation: 'example'
+    )
+    @category = categories(:cars)
   end
   test 'should be valid' do
     assert @user.valid?
@@ -74,5 +77,21 @@ class UserTest < ActiveSupport::TestCase
   end
   test "authenticated? should return false for a user with nil digest" do
     assert_not @user.authenticated?(:remember, '')
+  end
+
+  test 'assocoated orders should be destroyed' do
+    @user.save
+    @user.orders.create!(
+      title: 'Wash car',
+      description: 'I want to wash my car. I need help!',
+      skills: 'Washing',
+      city: 'Kyiv',
+      price: 2000.50,
+      duedate: '11.07.2020',
+      category_id: @category.id
+    )
+    assert_difference 'Order.count', -1 do
+      @user.destroy
+    end
   end
 end

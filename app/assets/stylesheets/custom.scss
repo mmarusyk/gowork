@@ -5,6 +5,7 @@ $text-color_1: #05386B;
 $text-color_2: rgb(9, 89, 169);
 $text-color_3: #EDF5E1;
 $background-color_1: #5CDB95;
+$border_1: #aaa;
 
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -226,7 +227,7 @@ footer {
     padding-top: 10px
   }
   .description {
-    border: 1px solid #aaa;
+    border: 1px solid $border_1;
     padding-top: 10px;
     width: 80%;
   }
@@ -258,6 +259,103 @@ input {
     text-align: center;
   }
 }
+
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+} 
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+#session_remember_me {
+  width: auto; margin-left: 0;
+}
+
+.users, .categories {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid $gray-lighter;
+  }
+}
+
+.categories {
+  .item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .text {
+      display: flex;
+      flex-wrap: wrap;
+      span {
+        width: 100%;
+        padding-top: 10px;
+        color: $text-color_1;
+      }
+      .title {
+        font-size: 24px;
+        
+      }
+    }
+    .buttons {
+      padding: 5px;
+    }
+  }
+}
+
+.userorders {
+  .orders {
+    padding: 10px;
+    .order {
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      display: flex;
+      border-bottom: 1px solid $border_1;
+    }
+    .gravatar-div {
+      display: flex;
+      align-items: center;
+      width: 200px;
+    }
+    .user {
+      padding: 5px
+    }
+    .text {
+      padding-left: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 16px;
+      justify-content: space-between;
+      .title {
+        padding-left: 10px;
+        width: 100%;
+        font-size: 28px;
+      }
+      .timestamp, .city {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    }
+  }
+}
+
 
 
 @media ( max-width: 1200px ) {
@@ -446,63 +544,12 @@ input {
       }
     }
   }
-}
-
-#error_explanation {
-  color: red;
-  ul {
-    color: red;
-    margin: 0 0 30px 0;
-  }
-}
-.field_with_errors {
-  @extend .has-error;
-  .form-control {
-    color: $state-danger-text;
-  }
-} 
-.checkbox {
-  margin-top: -10px;
-  margin-bottom: 10px;
-  span {
-    margin-left: 20px;
-    font-weight: normal;
-  }
-}
-#session_remember_me {
-  width: auto; margin-left: 0;
-}
-
-.users, .categories {
-  list-style: none;
-  margin: 0;
-  li {
-    overflow: auto;
-    padding: 10px 0;
-    border-bottom: 1px solid $gray-lighter;
-  }
-}
-
-.categories {
-  .item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    .text {
-      display: flex;
-      flex-wrap: wrap;
-      span {
-        width: 100%;
-        padding-top: 10px;
-        color: $text-color_1;
+  .userorders {
+    .orders {
+      .order {
+        flex-wrap: wrap;
+        justify-content: center;
       }
-      .title {
-        font-size: 24px;
-        
-      }
-    }
-    .buttons {
-      padding: 5px;
     }
   }
 }

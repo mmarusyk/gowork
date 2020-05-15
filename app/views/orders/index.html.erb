@@ -1,0 +1,17 @@
+<% provide(:title, 'Всі замовлення') %>
+
+
+<div class="userorders">
+<h1>Всі замовлення</h1>
+<% if logged_in? %>
+<%= link_to 'Мої замовлення', user_orders_path(current_user), class: "btn-lg btn-info button_class" %>
+<%= link_to 'Додати замовлення', new_order_path, class: "btn-lg btn-success button_class" %>
+<%end%>
+<%= will_paginate%>
+
+<ul class="orders">
+  <%= render @orders%>
+</ul>
+
+<%= will_paginate%>
+</div>
