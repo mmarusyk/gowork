@@ -4,7 +4,7 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
   include ApplicationHelper
 
   def setup
-  @user = users(:misha)
+    @user = users(:misha)
   end
 
   test 'profile display' do

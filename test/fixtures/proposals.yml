@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  content: MyText
+  price: 9.99
+  duedate: 2020-05-15 18:31:13
+  user: misha
+  order: one
+  created_at: <%= 10.minutes.ago %> 
+
+most_recent:
+  content: MyText
+  price: 9.99
+  duedate: 2020-05-15 18:31:13
+  user: misha
+  order: one
+  created_at: <%= Time.zone.now %>
