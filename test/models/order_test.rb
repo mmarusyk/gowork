@@ -4,14 +4,13 @@ class OrderTest < ActiveSupport::TestCase
   def setup
     @user = users(:misha)
     @category = categories(:cars)
-    @order = Order.new(
+    @order = @user.orders.build(
       title: 'Wash car',
       description: 'I want to wash my car. I need help!',
       skills: 'Washing',
       city: 'Kyiv',
       price: 2000.50,
       duedate: '11.07.2020',
-      user_id: @user.id,
       category_id: @category.id
     )
   end
@@ -58,5 +57,9 @@ class OrderTest < ActiveSupport::TestCase
   test 'price should be present' do
     @order.price = nil
     assert_not @order.valid?
+  end
+
+  test 'order should be most recent first' do
+    assert_equal orders(:most_recent), Order.first
   end
 end

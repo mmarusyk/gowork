@@ -7,15 +7,17 @@ one:
   city: MyString
   price: 100
   duedate: 2020-05-15 09:03:56
-  user: one
-  category: one
+  user: misha
+  category: car
+  created_at: <%= 10.minutes.ago %> 
 
-two:
+most_recent:
   title: MyString
   description: MyText
   skills: MyText
   city: MyString
   price: 200
   duedate: 2020-05-15 09:03:56
-  user: two
-  category: two
+  user: misha
+  category: house
+  created_at: <%= Time.zone.now %> 
