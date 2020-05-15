@@ -1,4 +1,4 @@
-<div class="order_form">
+
 <%= form_with(model: @order, local: true) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   
@@ -25,5 +25,3 @@
 
   <%= f.submit "Post", class: "btn btn-primary" %>
 <% end %>
-
-</div>
