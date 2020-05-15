@@ -19,8 +19,9 @@
     <b>Завершується:</b> <%= order.duedate %>
   </span>
 </div>
-<% if current_user?(order.user) %> 
+<% if current_user?(order.user) || current_user.admin? %> 
 <div class="buttons">
-  <%= link_to "Видалити", order, method: :delete, data: { confirm: "Ти впевнений?" }, class: "btn btn-danger" %> <%end%>
+  <%= link_to "Видалити", order, method: :delete, data: { confirm: "Ти впевнений?" }, class: "btn btn-danger" %>
 </div>
+  <%end%>
 </li> 
