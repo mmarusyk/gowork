@@ -329,9 +329,10 @@ input {
       display: flex;
       border-bottom: 1px solid $border_1;
     }
-    .gravatar {
+    .gravatar-div {
       display: flex;
       align-items: center;
+      width: 200px;
     }
     .user {
       padding: 5px

@@ -1,0 +1,29 @@
+<div class="order_form">
+<%= form_with(model: @order, local: true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  
+  <%= f.label :title, 'Назва' %>
+  <%= f.text_field :title, class: 'form-control'  %>
+  
+  <%= f.label :description, 'Опис' %>
+  <%= f.text_area :description %>
+
+  <%= f.label :skills, 'Навички' %>
+  <%= f.text_field :skills %>
+
+  <%= f.label :city, 'Місцезнаходження' %>
+  <%= f.text_field :city, class: 'form-control'  %>
+
+  <%= f.label :duedate, 'Дата завершення' %>
+  <%= f.date_field :duedate, class: 'form-control'  %>
+
+  <%= f.label :category_id, 'Категорія' %>
+  <%= f.select :category_id, Category.all.collect {|x| [x.title, x.id]} %>
+
+  <%= f.label :price, 'Бюджет' %>
+  <%= f.text_field :price %>
+
+  <%= f.submit "Post", class: "btn btn-primary" %>
+<% end %>
+
+</div>

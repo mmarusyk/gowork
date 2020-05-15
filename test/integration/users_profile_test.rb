@@ -13,10 +13,5 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
     assert_select 'title', full_title("#{@user.first_name} #{@user.last_name}")
     assert_select 'h1', text: "#{@user.first_name} #{@user.last_name}"
     assert_select 'img.gravatar'
-    assert_match @user.orders.count.to_s, response.body
-    assert_select 'div.pagination'
-    @user.orders.paginate(page: 1).each do |order|
-      assert_match order.title, response.body
-    end
   end
 end

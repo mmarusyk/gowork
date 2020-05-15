@@ -7,8 +7,8 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     assert_select 'title', 'Головна | GoWork App'
   end
 
-  test "should get home" do
-    get home_path
+  test "should get index" do
+    get index_path
     assert_response :success
     assert_select 'title', 'Головна | GoWork App'
   end

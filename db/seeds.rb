@@ -13,7 +13,7 @@ User.create!(
 )
 
 # Generate a bunch of additional users.
-99.times do |n|
+10.times do |n|
   name = Faker::Name.name
   email = "example-#{n+1}@e.e"
   password = "password"
@@ -47,7 +47,7 @@ end
 # Generate orders for a subset of users.
 users = User.order(:created_at).take(6)
 
-50.times do
+2.times do
   title = Faker::Lorem.sentence(word_count: 4)
   description = Faker::Lorem.sentence(word_count: 150)
   skills = Faker::Job.key_skill
