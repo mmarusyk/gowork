@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   resources :password_resets, only: %i[new create edit update]
   resources :categories
   resources :orders
-  resources :proposals, only: %i[create destroy update]
+  resources :proposals
 end

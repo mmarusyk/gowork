@@ -51,7 +51,7 @@
         <%= link_to "Редагувати", edit_order_path, class: "btn btn-warning" %>
       <%end%>
       <% if current_user && !(current_user?(@order.user) || current_user.admin?) %> 
-        <%= link_to "Подати заявку", '#', class: "btn btn-success" %>
+        <%= link_to "Подати заявку", new_proposal_path(order_id: @order.id), class: "btn btn-success" %>
       <% end %>
       </div>
 </div>
