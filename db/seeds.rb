@@ -31,3 +31,38 @@ User.create!(
     activated_at: Time.zone.now
   )
 end
+
+# Generate categories.
+categories = []
+20.times do
+  title = Faker::Job.field
+  description = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae sed perferendis libero ducimus optio ipsum. Consectetur, aspernatur? Ipsum quas, vitae recusandae, cupiditate, cum et voluptatum tenetur veniam nisi laboriosam dolore'
+  category = Category.create!(
+    title: title,
+    description: description
+  )
+  categories.push category.id
+end
+
+# Generate orders for a subset of users.
+users = User.order(:created_at).take(6)
+
+50.times do
+  title = Faker::Lorem.sentence(word_count: 4)
+  description = Faker::Lorem.sentence(word_count: 150)
+  skills = Faker::Job.key_skill
+  city = Faker::Address.city
+  duedate = Faker::Time.forward(days: 30)
+  category_id = categories.sample
+  price = Faker::Number.between(from: 100.0, to: 10000.0).round(2)
+  users.each { |user| user.orders.create!(
+    title: title,
+    description: description,
+    skills: skills,
+    city: city,
+    duedate: duedate,
+    category_id: category_id,
+    price: price
+    )
+  }
+end

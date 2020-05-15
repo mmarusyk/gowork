@@ -21,3 +21,16 @@ most_recent:
   user: misha
   category: house
   created_at: <%= Time.zone.now %> 
+
+<% 30.times do |n| %>
+order_<%= n %>:
+  title: <%= Faker::Lorem.sentence(word_count: 4) %>
+  description: <%= Faker::Lorem.sentence(word_count: 150) %>
+  skills: <%= Faker::Job.key_skill %>
+  city: <%= Faker::Address.city %>
+  duedate: <%= Faker::Time.forward(days: 30) %>
+  created_at:  <%= 12.days.ago %>
+  category_id: 1
+  price: <%= Faker::Number.between(from: 100.0, to: 10000.0).round(2) %>
+  user: misha
+<% end %>

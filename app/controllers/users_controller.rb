@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @orders = @user.orders.paginate(page: params[:page])
     redirect_to root_url && return unless User.where(activated: true)
   end
 

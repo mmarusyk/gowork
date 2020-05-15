@@ -44,8 +44,8 @@ class OrderTest < ActiveSupport::TestCase
     assert_not @order.valid?
   end
 
-  test 'description should be at most 500 characters' do
-    @order.description = 'a' * 501
+  test 'description should be at most 5000 characters' do
+    @order.description = 'a' * 5001
     assert_not @order.valid?
   end
 
