@@ -5,6 +5,7 @@ one:
   description: MyText
   skills: MyText
   city: MyString
+  price: 100
   duedate: 2020-05-15 09:03:56
   user: one
   category: one
@@ -14,6 +15,7 @@ two:
   description: MyText
   skills: MyText
   city: MyString
+  price: 200
   duedate: 2020-05-15 09:03:56
   user: two
   category: two
