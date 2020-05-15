@@ -45,12 +45,15 @@
       
 </div>
 <div class="menu">
-      <% if current_user?(@order.user) || current_user.admin? %> 
       <div class="buttons">
+      <% if current_user?(@order.user) || current_user.admin? %> 
         <%= link_to "Видалити", @order, method: :delete, data: { confirm: "Ти впевнений?" }, class: "btn btn-danger" %>
         <%= link_to "Редагувати", edit_order_path, class: "btn btn-warning" %>
+      <%end%>
+      <% if current_user && !(current_user?(@order.user) || current_user.admin?) %> 
+        <%= link_to "Подати заявку", '#', class: "btn btn-success" %>
+      <% end %>
       </div>
-        <%end%>
 </div>
 <div class="proposals">
       <div class="row">

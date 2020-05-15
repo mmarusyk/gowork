@@ -4,6 +4,9 @@
 <div class="orders">
   <h1>Мої замовлення</h1>
   <%= link_to 'Додати замовлення', new_order_path, class: "btn-lg btn-success button_class" %>
+  <%= link_to 'Активні', '#', class: "btn-lg btn-primary button_class" %>
+  <%= link_to 'Виконуються', '#', class: "btn-lg btn-warning button_class" %>
+  <%= link_to 'Завершені', '#', class: "btn-lg btn-info button_class" %>
 
 <%= will_paginate @orders%>
 
