@@ -69,7 +69,7 @@
       margin-left: 20%;
     }
     position: relative;
-    height: 40vh;
+    height: 95vh;
     .menu {
       flex-wrap: wrap;
       &_left {
@@ -128,6 +128,40 @@
             white-space: normal;
           }
         }
+      }
+    }
+  }
+  footer{
+    .social, .links, .info {
+      display: flex;
+      width: 100%;
+      flex-wrap: wrap;
+    }
+  }
+  .presentation {
+    h1 {
+      font-size: 30px;
+    }
+    &_items {
+      .item {
+        display: flex;
+        flex-wrap: wrap;
+        .icon {
+          width: 260px;
+        }
+        .title {
+          font-size: 22px;
+        }
+      }
+    }
+  }
+  .category, .cities {
+    h2 {
+      font-size: 30px;
+    }
+    .items {
+      .item {
+        width: 120px;
       }
     }
   }
