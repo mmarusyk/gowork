@@ -32,7 +32,7 @@
           <b>Статус:</b> <%= order.status %>
         </span>
       <div class="buttons">
-        <% if  current_user && (current_user?(order.user) || current_user.admin?) %> 
+        <% if  current_user && (current_user?(order.user) && order.status == 'active' || current_user.admin?) %> 
           <%= link_to "Видалити", order, method: :delete, data: { confirm: "Ти впевнений?" }, class: "btn btn-danger" %>
           <%= link_to "Редагувати", edit_order_path(order.id), class: "btn btn-warning" %>
         <%end%>

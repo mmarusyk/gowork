@@ -3,9 +3,9 @@
 
 <div class="proposals">
   <h1>Мої заявки (<%= @user.proposals.count %>) </h1>
-  <%= link_to 'Активні', '#', class: "btn-lg btn-primary button_class" %>
-  <%= link_to 'Виконуються', '#', class: "btn-lg btn-warning button_class" %>
-  <%= link_to 'Завершені', '#', class: "btn-lg btn-info button_class" %>
+  <%# <%= link_to 'Активні', '#', class: "btn-lg btn-primary button_class" %>
+  <%# <%= link_to 'Виконуються', '#', class: "btn-lg btn-warning button_class" %>
+  <%# <%= link_to 'Завершені', '#', class: "btn-lg btn-info button_class" %>
 
 <%= will_paginate @proposals%>
 
@@ -40,7 +40,7 @@
           <b>Завершить до:</b> <%= proposal.duedate %>
         </span>
         <div class="buttons">
-          <% if current_user && current_user?(proposal.user) %> 
+          <% if current_user && current_user?(proposal.user) && proposal.order.status != 'doing' %> 
             <%= link_to "Видалити", proposal, method: :delete, data: { confirm: "Ти впевнений?" }, class: "btn btn-danger" %>
             <%= link_to "Редагувати", edit_proposal_path(proposal.id), class: "btn btn-warning" %>
           <% end %>

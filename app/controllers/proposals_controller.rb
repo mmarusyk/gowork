@@ -40,6 +40,18 @@ class ProposalsController < ApplicationController
     redirect_to request.referrer || proposals_url(current_user)
   end
 
+  def choose_proposal
+    @proposal = Proposal.find_by(id: params[:id])
+    @order = Order.find_by(id: @proposal.order_id)
+    proposals = Proposal.where('order_id = ? and id != ?', @proposal.order_id, @proposal.id)
+    proposals.each do |proposal|
+      proposal.destroy
+    end
+    @order.status = 'doing'
+    @order.save
+    redirect_to request.referrer || orders_url(current_user)
+  end
+
   private
 
     def proposals_params
