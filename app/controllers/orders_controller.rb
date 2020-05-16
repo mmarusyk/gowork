@@ -1,6 +1,15 @@
 class OrdersController < ApplicationController
   before_action :logged_in_user, only: %i[create destroy]
   before_action :correct_user, only: %i[destroy edit update]
+  before_action :status_check
+
+  def status_check
+    orders = Order.where('status = ? and duedate < ?', 'active', Time.now)
+    orders.each do |order| 
+      order.status = 'ended' 
+      order.save
+    end
+  end
 
   def index
       @orders = Order.where('status = ? and duedate >= ?','active', Time.now).paginate(page: params[:page])
@@ -57,7 +66,7 @@ class OrdersController < ApplicationController
   def destroy
     @order.destroy
     flash[:success] = 'Замовлення видалено'
-    redirect_to request.referrer || orders_url(current_user)
+    redirect_to orders_url(current_user)
   end
 
   private

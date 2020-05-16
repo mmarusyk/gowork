@@ -28,6 +28,9 @@
       </div>
     </div>
     <div class="col-md-2">
+    <span class="status">
+          <b>Статус:</b> <%= order.status %>
+        </span>
       <div class="buttons">
         <% if  current_user && (current_user?(order.user) || current_user.admin?) %> 
           <%= link_to "Видалити", order, method: :delete, data: { confirm: "Ти впевнений?" }, class: "btn btn-danger" %>
