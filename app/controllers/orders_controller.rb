@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   before_action :correct_user, only: %i[destroy edit update]
 
   def index
-    @orders = Order.paginate(page: params[:page])
+      @orders = Order.paginate(page: params[:page])
   end
 
   def show
@@ -71,6 +71,10 @@ class OrdersController < ApplicationController
       :price
     )
   end
+
+  # def category_params
+  #   params.require(:category).permit(:category_id)
+  # end
 
   # def correct_user
   #   @order = current_user.orders.find_by(id: params[:id])
