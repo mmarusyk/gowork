@@ -4,7 +4,7 @@ class ProposalsController < ApplicationController
   def new
     if current_user.proposals.find_by(order_id: params[:order_id])
       flash[:success] = "Заявку вже подано!"
-      redirect_to proposals_url(current_user)
+      redirect_to user_proposals_url(current_user)
     else
       @proposal = current_user.proposals.build(order_id: params[:order_id]) if logged_in?
     end
@@ -14,7 +14,7 @@ class ProposalsController < ApplicationController
     @proposal = current_user.proposals.build(proposals_params)
     if @proposal.save
       flash[:success] = "Заявку створено!"
-      redirect_to proposals_url(current_user)
+      redirect_to user_proposals_url(current_user)
     else
       render 'new'
     end
