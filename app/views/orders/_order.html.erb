@@ -1,4 +1,4 @@
-<li id="order-<%= order.id %>" class="order">
+<li id="order-<%= order.id %>" class="item">
   <div class="row">
     <div class="col-md-2">
       <div class="gravatar-div">
@@ -28,7 +28,7 @@
       <div class="buttons">
         <% if  current_user && (current_user?(order.user) || current_user.admin?) %> 
           <%= link_to "Видалити", order, method: :delete, data: { confirm: "Ти впевнений?" }, class: "btn btn-danger" %>
-          <%= link_to "Редагувати", order, method: :edit, class: "btn btn-warning" %>
+          <%= link_to "Редагувати", edit_order_path(order.id), class: "btn btn-warning" %>
         <%end%>
         <% if current_user && !(current_user?(order.user) || current_user.admin?) %> 
           <%= link_to "Подати заявку", '#', class: "btn btn-success" %>
