@@ -1,0 +1,134 @@
+@media ( max-width: 1200px ) {
+  header {
+    .menu {
+      &_left {
+        padding-left: 100px;
+      }
+      &_item {
+        padding-right: 4px;
+      }
+      &_right {
+        .menu_item {
+          padding-right: 8px;
+        }
+      }
+      &_link {
+        font-size: 14px;
+      }
+    }
+  }
+  .orders {
+    .items {
+      .item {
+        .gravatar-div {
+          margin-top: 25px;
+        }
+        .text {
+          padding-left: 30px;
+        }
+      }
+    }
+  }
+}
+
+@media ( max-width: 991px ) {
+  header {
+    .menu {
+      &_left {
+        padding-left: 0px;
+        justify-content: space-between;
+      }
+      &_item {
+        padding-right: 22px;
+      }
+      &_right {
+        justify-content: space-between;
+      }
+      &_link {
+        font-size: 16px;
+      }
+    }
+  }
+  .fix-dropdown {
+    margin-left: -80px;
+  }
+  .orders {
+    .items {
+      .item {
+        .text {
+          padding-left: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media ( max-width: 767px ) {
+  header {
+    .logo {
+      margin-left: 20%;
+    }
+    position: relative;
+    height: 40vh;
+    .menu {
+      flex-wrap: wrap;
+      &_left {
+        padding-left: 0px;
+        justify-content: space-between;
+      }
+      &_item {
+        width: 100%;
+        padding-right: 22px;
+      }
+      &_right {
+        justify-content: space-between;
+        padding-left: 0;
+      }
+      &_link {
+        font-size: 18px;
+      }
+    }
+  }
+  .fix-dropdown {
+    width: 100vw;
+    margin-left: -14px;
+  }
+  .orders {
+    h1 {
+      font-size: 32px;
+    }
+    .orders_buttons {
+      flex-wrap: wrap;
+      .btn {
+        width: 48%;
+        margin: 2px;
+        white-space: normal;
+      }
+    }
+    .items {
+      .item {
+        .text {
+          padding-left: 0px;
+          font-size: 16px;
+          &_item {
+            padding-left: 10px;
+            width: 100%;
+            font-size: 14px;
+          }
+          .title {
+            width: 100%;
+            font-size: 22px;
+            
+          }
+        }
+        .buttons {
+          .btn {
+            width: 48%;
+            margin: 2px;
+            white-space: normal;
+          }
+        }
+      }
+    }
+  }
+}

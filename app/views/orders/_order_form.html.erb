@@ -15,7 +15,7 @@
   <%= f.text_field :city, class: 'form-control'  %>
 
   <%= f.label :duedate, 'Дата завершення' %>
-  <%= f.date_field :duedate, class: 'form-control'  %>
+  <%= f.datetime_select :duedate, class: 'form-control datetime'%>
 
   <%= f.label :category_id, 'Категорія' %>
   <%= f.select :category_id, Category.all.collect {|x| [x.title, x.id]} %>

@@ -3,12 +3,12 @@
 
 <div class="orders">
   <h1>Всі замовлення</h1>
+  <div class="orders_buttons">
   <% if logged_in? %>
-  <%= link_to 'Мої замовлення', user_orders_path(current_user), class: "btn-lg btn-info button_class" %>
-  <%= link_to 'Додати замовлення', new_order_path, class: "btn-lg btn-success button_class" %>
+  <%= link_to 'Мої замовлення', user_orders_path(current_user), class: "btn btn-lg btn-info button_class" %>
+  <%= link_to 'Додати замовлення', new_order_path, class: "btn btn-lg btn-success button_class" %>
   <%end%>
-
-  <%= will_paginate%>
+  </div>
 
   <ul class="items">
     <%= render @orders%>
