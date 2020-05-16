@@ -58,7 +58,7 @@ end
 users = User.order(:created_at).take(6)
 orders = []
 2.times do
-  title = Faker::Lorem.sentence(word_count: 2)
+  title = Faker::Job.title
   description = Faker::Lorem.sentence(word_count: 150)
   skills = Faker::Job.key_skill
   city = Faker::Address.city
@@ -91,6 +91,6 @@ end
     duedate: duedate,
     order_id: order_id,
     price: price
-    )
+  )
   }
 end
