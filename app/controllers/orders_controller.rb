@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   before_action :correct_user, only: %i[destroy edit update]
 
   def index
-      @orders = Order.paginate(page: params[:page])
+      @orders = Order.where('status = ? and duedate >= ?','active', Time.now).paginate(page: params[:page])
   end
 
   def show
@@ -17,6 +17,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = current_user.orders.build(order_params)
+    @order.status = 'active'
     if @order.save
       flash[:success] = "Замовлення створено!"
       redirect_to orders_url(current_user)
@@ -27,11 +28,15 @@ class OrdersController < ApplicationController
   end
 
   def edit
-    if current_user.admin?
-      @order = Order.find_by(id: params[:id])
-    else
-      @order = current_user.orders.find_by(id: params[:id])
-    end
+      if current_user.admin?
+        @order = Order.find_by(id: params[:id])
+      else
+        @order = current_user.orders.find_by(id: params[:id])
+        if @order.status != 'active'
+          flash[:success] = 'Замовлення виконується/завершене'
+          redirect_to order_url
+        end
+      end
   end
 
   def update
@@ -40,6 +45,7 @@ class OrdersController < ApplicationController
     else
       @order = current_user.orders.find_by(id: params[:id])
     end
+    @order.status = 'active'
     if @order.update(order_params)
       flash[:success] = 'Дані замовлення оновлено'
       redirect_to order_url
@@ -68,7 +74,8 @@ class OrdersController < ApplicationController
       :city,
       :duedate,
       :category_id,
-      :price
+      :price,
+      :status
     )
   end
 
