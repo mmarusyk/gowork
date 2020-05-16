@@ -1,5 +1,6 @@
 class ProposalsController < ApplicationController
   before_action :logged_in_user, only: %i[create destroy]
+  before_action :correct_user, only: %i[destroy update edit]
 
   def new
     if current_user.proposals.find_by(order_id: params[:order_id])
@@ -20,7 +21,23 @@ class ProposalsController < ApplicationController
     end
   end
 
+  def edit
+    @proposal = current_user.proposals.find_by(id: params[:id])
+  end
+
+  def update
+    if @proposal.update(proposals_params)
+      flash[:success] = 'Дані заявки оновлено'
+      redirect_to user_proposals_url(current_user)
+    else
+      render 'edit'
+    end
+  end
+
   def destroy
+    @proposal.destroy
+    flash[:success] = 'Заявку видалено'
+    redirect_to request.referrer || proposals_url(current_user)
   end
 
   private
@@ -32,5 +49,14 @@ class ProposalsController < ApplicationController
         :duedate,
         :order_id
       )
+    end
+
+    def correct_user
+      if current_user.admin?
+        @proposal = Proposal.find_by(id: params[:id])
+      else
+        @proposal = current_user.proposals.find_by(id: params[:id])
+      end
+      redirect_to user_proposals_url(current_user) if @proposal.nil?
     end
 end

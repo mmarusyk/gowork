@@ -28,8 +28,8 @@
         </span>
         <div class="buttons">
           <% if current_user && (current_user?(proposal.user) || current_user.admin?) %> 
-            <%# <%= link_to "Видалити", proposal, method: :delete, data: { confirm: "Ти впевнений?" }, class: "btn btn-danger" %>
-            <%# <%= link_to "Редагувати", proposal, method: :edit, class: "btn btn-warning" %>
+            <%= link_to "Видалити", proposal, method: :delete, data: { confirm: "Ти впевнений?" }, class: "btn btn-danger" %>
+            <%= link_to "Редагувати", edit_proposal_path(proposal.id), class: "btn btn-warning" %>
           <% end %>
           <% if current_user && (current_user?(@order.user) || current_user.admin?) %>
             <%= link_to "Вибрати", "#", class: "btn btn-primary"%>
