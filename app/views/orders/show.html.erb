@@ -52,7 +52,7 @@
 </div>
 <div class="menu">
       <div class="buttons">
-      <% if current_user?(@order.user) || current_user.admin? %> 
+      <% if (current_user?(@order.user) || current_user.admin?) && @order.status == 'active' %> 
         <%= link_to "Видалити", @order, method: :delete, data: { confirm: "Ти впевнений?" }, class: "btn btn-danger" %>
         <%= link_to "Редагувати", edit_order_path, class: "btn btn-warning" %>
       <%end%>
@@ -60,7 +60,7 @@
         <%= link_to "Подати заявку", new_proposal_path(order_id: @order.id), class: "btn btn-success" %>
       <% end %>
       <% if current_user && (current_user?(@order.user)) && @order.status == 'doing' %> 
-        <%= link_to "Завершити", new_proposal_path(order_id: @order.id), class: "btn btn-primary" %>
+        <%= link_to "Завершити", finish_order_path(@order.id), method: :patch, class: "btn btn-primary" %>
       <% end %>
       </div>
 </div>

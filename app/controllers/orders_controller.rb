@@ -13,6 +13,7 @@ class OrdersController < ApplicationController
 
   def index
       @orders = Order.where('status = ? and duedate >= ?','active', Time.now).paginate(page: params[:page])
+      @orders = Order.all.paginate(page: params[:page]) if current_user.admin?
   end
 
   def show
@@ -67,6 +68,12 @@ class OrdersController < ApplicationController
     @order.destroy
     flash[:success] = 'Замовлення видалено'
     redirect_to orders_url(current_user)
+  end
+
+  def finish_order
+    @order = Order.find(params[:id])
+    @order.update_attribute(:status, 'end')
+    redirect_to @order
   end
 
   private
