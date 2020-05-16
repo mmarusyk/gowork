@@ -326,7 +326,7 @@ input {
 .orders {
   .items {
     padding: 20px 0 10px 0;
-    .order {
+    .item {
       margin-bottom: 10px;
       padding-bottom: 10px;
       display: flex;
@@ -558,9 +558,9 @@ input {
       }
     }
   }
-  .userorders {
-    .orders {
-      .order {
+  .orders {
+    .items {
+      .item {
         flex-wrap: wrap;
         justify-content: center;
       }

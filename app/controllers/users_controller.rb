@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: %i[index edit update destroy orders]
-  before_action :correct_user, only: %i[edit update orders]
+  before_action :logged_in_user, only: %i[index edit update destroy orders proposals]
+  before_action :correct_user, only: %i[edit update orders orders proposals]
   before_action :admin_user, only: :destroy
 
   def index
@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @orders = @user.orders.paginate(page: params[:page]) 
+    @orders = @user.orders.paginate(page: params[:page])
     redirect_to root_url && return unless User.where(activated: true)
   end
 
@@ -52,6 +52,11 @@ class UsersController < ApplicationController
   def orders
     @user = User.find(params[:id])
     @orders = @user.orders.paginate(page: params[:page], per_page: 20)
+  end
+
+  def proposals
+    @user = User.find(params[:id])
+    @proposals = @user.proposals.paginate(page: params[:page], per_page: 20)
   end
 
   private
