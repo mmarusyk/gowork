@@ -1,4 +1,17 @@
-<li id="proposal-<%= proposal.id %>" class="item">
+<% provide(:title, 'Мої заявки') %>
+
+
+<div class="proposals">
+  <h1>Мої заявки (<%= @user.proposals.count %>) </h1>
+  <%# <%= link_to 'Активні', '#', class: "btn-lg btn-primary button_class" %>
+  <%# <%= link_to 'Виконуються', '#', class: "btn-lg btn-warning button_class" %>
+  <%# <%= link_to 'Завершені', '#', class: "btn-lg btn-info button_class" %>
+
+<%= will_paginate @proposals%>
+
+<ul class="items">
+  <% @proposals.each do |proposal| %>
+  <li id="proposal-<%= proposal.id %>" class="item">
   <div class="row">
     <div class="col-md-1">
       <div class="gravatar-div">
@@ -8,7 +21,7 @@
     <div class="col-md-8">
       <div class="text">
         <span class="user">
-          <%= link_to "#{proposal.user.first_name} #{proposal.user.last_name}", proposal.user, class: "user_link" %>
+          <%= link_to "#{proposal.order.title}", proposal.order, class: "user_link" %>
         </span> 
         <span class="content">
           <%= proposal.content %>
@@ -27,27 +40,17 @@
           <b>Завершить до:</b> <%= proposal.duedate %>
         </span>
         <div class="buttons">
-          <% if current_user && (current_user?(proposal.user) || current_user.admin?) && @order.status != 'doing' %> 
+          <% if current_user && current_user?(proposal.user) && proposal.order.status != 'doing' %> 
             <%= link_to "Видалити", proposal, method: :delete, data: { confirm: "Ти впевнений?" }, class: "btn btn-danger" %>
             <%= link_to "Редагувати", edit_proposal_path(proposal.id), class: "btn btn-warning" %>
-          <% end %>
-          <% if current_user && (current_user?(@order.user) || current_user.admin?) && @order.status == 'active' %>
-            <%= link_to "Вибрати", choose_proposal_path(id: proposal.id), method: :delete, class: "btn btn-primary"%>
           <% end %>
         </div>
       </div>
     </div>
   </div>
 </li> 
+  <% end %>
+</ul>
 
-<div class="row">
-  <div class="col-md-1">
-
-  </div>
-  <div class="col-md-8">
-
-  </div>
-  <div class="col-md-3">
-    
-  </div>
+<%= will_paginate @proposals%>
 </div>

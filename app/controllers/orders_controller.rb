@@ -1,9 +1,19 @@
 class OrdersController < ApplicationController
   before_action :logged_in_user, only: %i[create destroy]
   before_action :correct_user, only: %i[destroy edit update]
+  before_action :status_check
+
+  def status_check
+    orders = Order.where('status = ? and duedate < ?', 'active', Time.now)
+    orders.each do |order| 
+      order.status = 'ended' 
+      order.save
+    end
+  end
 
   def index
-    @orders = Order.paginate(page: params[:page])
+      @orders = Order.where('status = ? and duedate >= ?','active', Time.now).paginate(page: params[:page])
+      @orders = Order.all.paginate(page: params[:page]) if current_user.admin?
   end
 
   def show
@@ -17,6 +27,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = current_user.orders.build(order_params)
+    @order.status = 'active'
     if @order.save
       flash[:success] = "Замовлення створено!"
       redirect_to orders_url(current_user)
@@ -27,11 +38,15 @@ class OrdersController < ApplicationController
   end
 
   def edit
-    if current_user.admin?
-      @order = Order.find_by(id: params[:id])
-    else
-      @order = current_user.orders.find_by(id: params[:id])
-    end
+      if current_user.admin?
+        @order = Order.find_by(id: params[:id])
+      else
+        @order = current_user.orders.find_by(id: params[:id])
+        if @order.status != 'active'
+          flash[:success] = 'Замовлення виконується/завершене'
+          redirect_to order_url
+        end
+      end
   end
 
   def update
@@ -40,6 +55,7 @@ class OrdersController < ApplicationController
     else
       @order = current_user.orders.find_by(id: params[:id])
     end
+    @order.status = 'active'
     if @order.update(order_params)
       flash[:success] = 'Дані замовлення оновлено'
       redirect_to order_url
@@ -51,7 +67,13 @@ class OrdersController < ApplicationController
   def destroy
     @order.destroy
     flash[:success] = 'Замовлення видалено'
-    redirect_to request.referrer || orders_url(current_user)
+    redirect_to orders_url(current_user)
+  end
+
+  def finish_order
+    @order = Order.find(params[:id])
+    @order.update_attribute(:status, 'end')
+    redirect_to @order
   end
 
   private
@@ -68,9 +90,14 @@ class OrdersController < ApplicationController
       :city,
       :duedate,
       :category_id,
-      :price
+      :price,
+      :status
     )
   end
+
+  # def category_params
+  #   params.require(:category).permit(:category_id)
+  # end
 
   # def correct_user
   #   @order = current_user.orders.find_by(id: params[:id])
