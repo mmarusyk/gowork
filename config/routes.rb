@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   resources :users
   get 'users/:id/orders' => 'users#orders', :as => :user_orders
+  get 'users/:id/proposals' => 'users#proposals', :as => :user_proposals
   resources :account_activations, only: [:edit]
   resources :password_resets, only: %i[new create edit update]
   resources :categories

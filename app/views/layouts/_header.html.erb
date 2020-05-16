@@ -23,7 +23,7 @@
           <% if logged_in? %>
             <li class="menu_item"> <%= link_to 'Користувачі', users_path, class: "menu_link" %> </li>
             <li class="menu_item"> <%= link_to 'Замовлення', orders_path, class: "menu_link" %> </li>
-            <li class="menu_item"> <%= link_to 'Мої заявки', '#', class: "menu_link" %> </li>
+            <li class="menu_item"> <%= link_to 'Мої заявки', user_proposals_path(current_user), class: "menu_link" %> </li>
             <li class= "dropdown menu_item">
               <a href="#" class="dropdown-toggle menu_link" data-toggle="dropdown"> Профіль <b class="caret"></b> </a> 
               <ul class="dropdown-menu">

@@ -54,6 +54,11 @@ class UsersController < ApplicationController
     @orders = @user.orders.paginate(page: params[:page], per_page: 20)
   end
 
+  def proposals
+    @user = User.find(params[:id])
+    @proposals = @user.proposals.paginate(page: params[:page], per_page: 20)
+  end
+
   private
 
   def user_params

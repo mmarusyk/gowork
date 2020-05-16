@@ -1,5 +1,5 @@
 class ProposalsController < ApplicationController
-  before_action :logged_in_user, only: [:create, :destroy]
+  before_action :logged_in_user, only: %i[create destroy]
 
   def new
     if current_user.proposals.find_by(order_id: params[:order_id])
