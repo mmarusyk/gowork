@@ -9,10 +9,10 @@
     <%= @user.description %>
   </div>
 </div>
-<div class="userorders">
+<div class="orders">
   <% if @user.orders.any? %>
     <h3>Замовлення (<%= @user.orders.count %>)</h3>
-    <ol class="orders">
+    <ol class="items">
       <%= render @orders %>
     </ol>
     <%= will_paginate @orders %>
