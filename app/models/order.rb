@@ -10,5 +10,5 @@ class Order < ApplicationRecord
   validates :description, presence: true, length: { maximum: 5000 }
   validates :city, presence: true
   validates :price, presence: true, numericality: {message: 'є неправильним значенням' }
-  validates_datetime :duedate, on_or_after: lambda { Date.current }
+  validates_datetime :duedate, on_or_after: lambda { Time.current }
 end
