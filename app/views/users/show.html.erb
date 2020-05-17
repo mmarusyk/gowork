@@ -1,20 +1,29 @@
 <% provide(:title, "#{@user.first_name} #{@user.last_name}")%>
 
 <div class="profile">
-  <span><%= gravatar_for(@user, size: 160) %></span>
-  <h1 class="name"><%= @user.first_name %> <%= @user.last_name %></h1>
-  <div class="email"><%= @user.email %></div>
-  <div class="city"><%= @user.city %></div>
-  <div class="description">
-    <%= @user.description %>
+  <div class="row">
+    <div class="col-lg-3 col-md-3 col-sm-4">
+      <div class="profile_main">
+        <span><%= gravatar_for(@user, size: 160) %></span>
+        <div class="email"><%= @user.email %></div>
+        <div class="city"><%= @user.city %></div>
+        <div class="created_at"> На сайті з <%= @user.created_at %></div>
+      </div>
+    </div>
+    <div class="col-lg-9 col-md-9 col-sm-8">
+      <h1 class="name"><%= @user.first_name %> <%= @user.last_name %></h1>
+      <div class="description">
+        <%= @user.description %>
+      </div>
+    </div>
   </div>
 </div>
 <div class="orders">
   <% if @user.orders.any? %>
-    <h3>Замовлення (<%= @user.orders.count %>)</h3>
-    <ol class="items">
-      <%= render @orders %>
-    </ol>
-    <%= will_paginate @orders %>
-    <% end %> 
+  <h3>Замовлення (<%= @user.orders.count %>)</h3>
+  <ol class="items">
+    <%= render @orders %>
+  </ol>
+  <%= will_paginate @orders %>
+  <% end %>
 </div>
