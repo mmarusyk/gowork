@@ -11,43 +11,8 @@
     <%= link_to 'Незавершені', user_orders_path(current_user, status: 'Незавершене'), class: "btn btn-lg btn-danger button_class" %>
   </div>
   <ul class="items">
-  <% @orders.each do |order| %>
-    <li id="order-<%= order.id %>" class="item">
-      <div class="row">
-        <div class="col-lg-10 col-md-10">
-          <div class="text">
-            <span class="text_item title">
-            <%= link_to order.title, order, class: "link" %>
-            </span>
-            <span class="text_item"> 
-            <b>Місто:</b> <%= order.city %>
-            </span>
-            <span class="text_item"> 
-            <b>Створено:</b> <%= order.created_at.strftime("%d.%m.%Y %H:%M") %>
-            </span>
-            <span class="text_item"> 
-            <b>Завершується:</b> <%= order.duedate.strftime("%d.%m.%Y %H:%M") %>
-            </span>
-            <span class="text_item">
-            <b>Категорія:</b> <%= order.category.title %>
-            </span>
-          </div>
-      </div>
-      <div class="col-md-2"> 
-          <div class="buttons">
-          <% if current_user?(order.user)  && ['Активне', 'Незавершене', 'Завершене'].include?(order.status) %>
-              <%= link_to "Видалити", order, method: :delete, data: { confirm: "Ти впевнений?" }, class: "btn btn-lg btn-danger" %>
-            <% end %>
-
-            <% if current_user?(order.user)  && ['Активне', 'Незавершене'].include?(order.status) %>
-              <%= link_to "Редагувати", edit_order_path, class: "btn btn-lg btn-warning" %>
-            <% end %>
-          </div>
-      </div>
-    </div>
-  </li>
-  <% end %>
-</ul>
+    <%= render @orders%>
+  </ul>
 
 <%= will_paginate @orders%>
 </div>

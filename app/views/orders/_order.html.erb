@@ -1,12 +1,6 @@
 <li id="order-<%= order.id %>" class="item">
   <div class="row">
-    <div class="col-lg-2 col-md-2">
-      <div class="gravatar-div">
-        <%= link_to gravatar_for(order.user, size: 80), order.user %>
-          <%= link_to "#{order.user.first_name} #{order.user.last_name}", order.user, class: "link-to-user" %>
-      </div>
-    </div>
-    <div class="col-lg-8 col-md-8">
+    <div class="col-lg-10 col-md-10">
       <div class="text">
         <span class="text_item title">
           <%= link_to order.title, order, class: "link" %>
@@ -33,8 +27,10 @@
       <span class="money">
           <b>Бюджет:</b> <%= order.price %> ₴
       </span>
-        <% if  current_user && (current_user?(order.user) && order.status == 'Активне' || current_user.admin?) %> 
+        <% if current_user?(order.user)  && (['Активне', 'Незавершене', 'Завершене'].include?(order.status) || current_user.admin?)%> 
           <%= link_to "Видалити", order, method: :delete, data: { confirm: "Ти впевнений?" }, class: "btn btn-danger" %>
+        <% end %>
+        <% if current_user?(order.user)  && (['Активне', 'Незавершене'].include?(order.status) || current_user.admin?)%>
           <%= link_to "Редагувати", edit_order_path(order.id), class: "btn btn-warning" %>
         <%end%>
         <% if current_user && !(current_user?(order.user)) %> 
