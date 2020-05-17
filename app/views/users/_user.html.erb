@@ -1,7 +1,31 @@
-<li>
-  <%= gravatar_for user, size: 50 %>
-  <%= link_to "#{user.first_name} #{user.last_name}", user %>
+<li class= "item">
+  <div class="information">
+    <div class="information_main">
+      <%= gravatar_for user, size: 50 %>
+      <%= link_to "#{user.first_name} #{user.last_name}", user, class:"user_link" %>
+    </div>
+    <% if current_user.admin?%>
+    <div class="information_add">
+      <span class="activated">
+        <%if user.activated %>
+          Підтверджений: Так
+        <% else %>
+        Підтверджений: Ні
+        <% end %>
+      </span>
+      <span class="admin">
+        <%if user.admin? %>
+          Адміністратор: Так
+        <% else %>
+          Адміністратор: Ні
+        <% end %>
+      </span>
+    </div>
+    <% end %> 
+  </div>
+  <div class="buttons">
   <% if current_user.admin? && !current_user?(user) %>
-  | <%= link_to 'Видалити', user, method: :delete, data: { confirm: "Ти впевнений?" } %>
+      <%= link_to 'Видалити', user, method: :delete, data: { confirm: "Ти впевнений?"}, class: "btn btn-danger" %>
   <% end %> 
+  </div>
 </li>

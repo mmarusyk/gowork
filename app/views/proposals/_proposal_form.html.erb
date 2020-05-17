@@ -8,10 +8,11 @@
   <%= f.label :duedate, 'Дата завершення' %>
   <%= f.datetime_select :duedate, class: 'form-control'  %>
 
-  <%= f.label :price, 'Ціна' %>
-  <%= f.text_field :price %>
+  <%= f.label :price, 'Ціна ₴' %>
+  <%= f.text_field :price, type: "number", style: "width: 90%; margin-right:20px;" %>
+  
 
   <%= f.hidden_field :order_id %>
 
-  <%= f.submit "Створити", class: "btn btn-success" %>
+  <%= f.submit yield(:text_button), class: "btn btn-success" %>
 <% end %>

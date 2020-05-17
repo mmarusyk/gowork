@@ -21,17 +21,17 @@
           <b>Ціна:</b> <%= proposal.price %>
         </span>
         <span class="element"> 
-          <b>Створено:</b> <%= proposal.created_at %>
+          <b>Створено:</b> <%= proposal.created_at.strftime("%d.%m.%Y %H:%M") %>
         </span>
         <span class="element"> 
-          <b>Завершить до:</b> <%= proposal.duedate %>
+          <b>Завершити до:</b> <%= proposal.duedate.strftime("%d.%m.%Y %H:%M") %>
         </span>
         <div class="buttons">
-          <% if current_user && (current_user?(proposal.user) || current_user.admin?) && @order.status != 'doing' %> 
+          <% if current_user && (current_user?(proposal.user) || current_user.admin?) && @order.status != 'Виконується' %> 
             <%= link_to "Видалити", proposal, method: :delete, data: { confirm: "Ти впевнений?" }, class: "btn btn-danger" %>
             <%= link_to "Редагувати", edit_proposal_path(proposal.id), class: "btn btn-warning" %>
           <% end %>
-          <% if current_user && (current_user?(@order.user) || current_user.admin?) && @order.status == 'active' %>
+          <% if current_user && (current_user?(@order.user) || current_user.admin?) && @order.status == 'Активне' %>
             <%= link_to "Вибрати", choose_proposal_path(id: proposal.id), method: :delete, class: "btn btn-primary"%>
           <% end %>
         </div>
