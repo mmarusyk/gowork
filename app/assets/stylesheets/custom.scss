@@ -384,4 +384,41 @@ input {
   }
 }
 
+
+
+//USERS
+.users {
+  .items{
+  .item {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    .information {
+      width: 80%;
+      display: flex;
+      display: wrap;
+      justify-content: space-between;
+      align-items: center;
+      &_add {
+        display: flex;
+        flex-wrap: wrap;
+        span {
+          width: 100%;
+        }
+      }
+      .user_link {
+        font-size: 18px;
+        @include link_standart;
+      }
+    }
+    .buttons {
+      // width: 20%;
+      padding: 5px;
+    }
+  }
+}
+}
+
 @import "media";

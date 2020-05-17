@@ -7,7 +7,7 @@
         <span><%= gravatar_for(@user, size: 160) %></span>
         <div class="email"><%= @user.email %></div>
         <div class="city"><%= @user.city %></div>
-        <div class="created_at"> На сайті з <%= @user.created_at %></div>
+        <div class="created_at"> На сайті з <%= @user.created_at.strftime("%d.%m.%Y %H:%M") %></div>
       </div>
     </div>
     <div class="col-lg-9 col-md-9 col-sm-8">
