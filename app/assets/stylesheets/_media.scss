@@ -132,6 +132,16 @@
       }
     }
   }
+
+  .profile {
+    .name {
+      text-align: center;
+      width: 100%;
+    }
+    .description {
+      width: 100%;
+    }
+  }
   footer{
     .social, .links, .info {
       display: flex;
