@@ -14,9 +14,11 @@
     <div class="col-md-3 col-sm-3">
       <div class="filter ">
         <h2>Пошук</h2>
-        <%= form_for "", url: orders_path, role: "search", method: :get do %>
+        <%= form_for "", url: user_orders_path(current_user), role: "search", method: :get do %>
+        <%= hidden_field_tag :status, params[:status] %>
+        <%= hidden_field_tag :is_used, true %>
         <h4>Категорія</h4>
-        <%= select_tag 'id', options_for_select(Category.all.collect {|x| [x.title, x.id]}), placeholder: "Введіть категорію", class: 'form-control' %>
+        <%= select_tag 'category_id', options_for_select(Category.all.collect {|x| [x.title, x.id]}), placeholder: "Введіть категорію", class: 'form-control' %>
         <h4>Назва</h4>
         <%= text_field_tag :title_or_description, @title_or_description, placeholder: "Пошук...", class: 'form-control' %>
         <h4>Адреса</h4>

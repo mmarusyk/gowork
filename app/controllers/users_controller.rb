@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   before_action :logged_in_user, only: %i[index edit update destroy orders proposals]
   before_action :correct_user, only: %i[edit update orders orders proposals]
   before_action :admin_user, only: :destroy
 
   def index
-    if current_user.admin?
-      @users = User.paginate(page: params[:page])
-    else
-      @users = User.where(activated: true).paginate(page: params[:page])
-    end
+    @users = if current_user.admin?
+               User.paginate(page: params[:page])
+             else
+               User.where(activated: true).paginate(page: params[:page])
+             end
   end
 
   def show
@@ -62,6 +64,13 @@ class UsersController < ApplicationController
       @orders = @user.orders.where('duedate < ?', Time.now).paginate(page: params[:page], per_page: 20)
     else
       @orders = @user.orders.where('status = ? and duedate >=?', 'Активне', Time.now).paginate(page: params[:page], per_page: 20)
+    end
+    if params[:is_used] == "true" && (params[:title_or_description] || params[:category_id] || params[:city] || params[:min_price] || params[:max_price] || params[:status])
+      @orders = @orders.search_by(params[:title_or_description],
+                                       params[:category_id],
+                                       params[:city],
+                                       params[:min_price],
+                                       params[:max_price]).paginate(page: params[:page], per_page: 20)
     end
   end
 
