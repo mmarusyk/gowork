@@ -55,7 +55,7 @@ class UsersController < ApplicationController
       @orders = @user.orders.where('status = ? and duedate >=?', params[:status], Time.now).paginate(page: params[:page], per_page: 20)
     elsif params[:status] == 'Виконується' || params[:status] == 'Завершене'
       @orders = @user.orders.where('status = ?', params[:status]).paginate(page: params[:page], per_page: 20)
-    elsif params[:status] == 'timeend'
+    elsif params[:status] == 'Незавершене'
       @orders = @user.orders.where('duedate < ?', Time.now).paginate(page: params[:page], per_page: 20)
     else
       @orders = @user.orders.where('status = ? and duedate >=?', 'Активне', Time.now).paginate(page: params[:page], per_page: 20)

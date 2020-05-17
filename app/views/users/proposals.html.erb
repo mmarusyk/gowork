@@ -9,7 +9,7 @@
 
 <%= will_paginate @proposals%>
 
-<ul class="items">
+<ol class="items">
   <% @proposals.each do |proposal| %>
   <li id="proposal-<%= proposal.id %>" class="item">
   <div class="row">
@@ -50,7 +50,7 @@
   </div>
 </li> 
   <% end %>
-</ul>
+</ol>
 
 <%= will_paginate @proposals%>
 </div>

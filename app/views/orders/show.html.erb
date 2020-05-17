@@ -68,7 +68,7 @@
       <div class="row">
         <div class="col-md-12">
           <% if @order.proposals.any? %>
-            <h3>Пропозиції  (<%= @order.proposals.count %>)</h3>
+            <h3><%= info_about_proposals(@order.status) %></h3>
             <ol class="items">
               <%= render @proposals %>
             </ol>
