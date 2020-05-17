@@ -37,10 +37,10 @@
           <b>Місто:</b> <%= @order.city %>
         </span>
         <span class="item"> 
-          <b>Створено:</b> <%= @order.created_at %>
+          <b>Створено:</b> <%= @order.created_at.strftime("%d.%m.%Y %H:%M") %>
         </span>
         <span class="item"> 
-          <b>Завершується:</b> <%= @order.duedate %>
+          <b>Завершується:</b> <%= @order.duedate.strftime("%d.%m.%Y %H:%M") %>
         </span>
         <span class="item"> 
           <b>Статус:</b> <%= @order.status %>
@@ -52,14 +52,14 @@
 </div>
 <div class="menu">
       <div class="buttons">
-      <% if (current_user?(@order.user) || current_user.admin?) && @order.status == 'active' %> 
+      <% if (current_user?(@order.user) || current_user.admin?) && @order.status == 'Активне' %> 
         <%= link_to "Видалити", @order, method: :delete, data: { confirm: "Ти впевнений?" }, class: "btn btn-danger" %>
         <%= link_to "Редагувати", edit_order_path, class: "btn btn-warning" %>
       <%end%>
-      <% if current_user && !(current_user?(@order.user)) && @order.status == 'active' %> 
+      <% if current_user && !(current_user?(@order.user)) && @order.status == 'Активне' %> 
         <%= link_to "Подати заявку", new_proposal_path(order_id: @order.id), class: "btn btn-success" %>
       <% end %>
-      <% if current_user && (current_user?(@order.user)) && @order.status == 'doing' %> 
+      <% if current_user && (current_user?(@order.user)) && @order.status == 'Виконується' %> 
         <%= link_to "Завершити", finish_order_path(@order.id), method: :patch, class: "btn btn-primary" %>
       <% end %>
       </div>
@@ -68,7 +68,7 @@
       <div class="row">
         <div class="col-md-12">
           <% if @order.proposals.any? %>
-            <h3>Пропозиції  (<%= @order.proposals.count %>)</h3>
+            <h3><%= info_about_proposals(@order.status) %></h3>
             <ol class="items">
               <%= render @proposals %>
             </ol>

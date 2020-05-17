@@ -14,7 +14,7 @@
       <%= f.text_field :city, class: 'form-control'  %>
 
       <%= f.label :description, 'Опис' %>
-      <%= f.text_field :description, class: 'form-control'  %>
+      <%= f.text_area :description, class: 'form-control'  %>
 
       <%= f.label :password, 'Пароль' %>
       <%= f.password_field :password, class: 'form-control'  %>
@@ -22,5 +22,5 @@
       <%= f.label :password_confirmation, 'Підтвердження пароля' %>
       <%= f.password_field :password_confirmation, class: 'form-control'  %>
 
-      <%= f.submit "Зберегти зміни", class: "btn btn-primary" %>
+      <%= f.submit yield(:text_button), class: "btn btn-primary" %>
 <% end %>

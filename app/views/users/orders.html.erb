@@ -5,46 +5,42 @@
   <h1>Мої замовлення (<%= @user.orders.count %>) </h1>
   <div class="orders_buttons">
     <%= link_to 'Додати', new_order_path, class: "btn btn-lg btn-success button_class" %>
-    <%= link_to 'Активні', user_orders_path(current_user, status: 'active'), class: "btn btn-lg btn-primary button_class" %>
-    <%= link_to 'Виконуються', user_orders_path(current_user, status: 'doing'), class: "btn btn-lg btn-warning button_class" %>
-    <%= link_to 'Завершені', user_orders_path(current_user, status: 'end'), class: "btn btn-lg btn-info button_class" %>
-    <%= link_to 'Незавершені', user_orders_path(current_user, status: 'timeend'), class: "btn btn-lg btn-danger button_class" %>
+    <%= link_to 'Активні', user_orders_path(current_user, status: 'Активне'), class: "btn btn-lg btn-primary button_class" %>
+    <%= link_to 'Виконуються', user_orders_path(current_user, status: 'Виконується'), class: "btn btn-lg btn-warning button_class" %>
+    <%= link_to 'Завершені', user_orders_path(current_user, status: 'Завершене'), class: "btn btn-lg btn-info button_class" %>
+    <%= link_to 'Незавершені', user_orders_path(current_user, status: 'Незавершене'), class: "btn btn-lg btn-danger button_class" %>
   </div>
-  <ul class="items">
-  <% @orders.each do |order| %>
-    <li id="order-<%= order.id %>" class="item">
-      <div class="row">
-        <div class="col-lg-10 col-md-10">
-          <div class="text">
-            <span class="text_item title">
-            <%= link_to order.title, order, class: "link" %>
-            </span>
-            <span class="text_item"> 
-            <b>Місто:</b> <%= order.city %>
-            </span>
-            <span class="text_item"> 
-            <b>Створено:</b> <%= order.created_at %>
-            </span>
-            <span class="text_item"> 
-            <b>Завершується:</b> <%= order.duedate %>
-            </span>
-            <span class="text_item">
-            <b>Категорія:</b> <%= order.category.title %>
-            </span>
-          </div>
-      </div>
-      <div class="col-md-2">
-        <% if current_user?(order.user)  && order.status == 'active' %> 
-          <div class="buttons">
-            <%= link_to "Видалити", order, method: :delete, data: { confirm: "Ти впевнений?" }, class: "btn btn-lg btn-danger" %>
-            <%= link_to "Редагувати", edit_order_path, class: "btn btn-lg btn-warning" %>
-          </div>
-        <%end%>
-      </div>
+  <div class="row">
+    <div class="col-md-3 col-sm-3">
+      <div class="filter ">
+        <h2>Пошук</h2>
+        <%= form_for "", url: user_orders_path(current_user), role: "search", method: :get do %>
+        <%= hidden_field_tag :status, params[:status] %>
+        <%= hidden_field_tag :is_used, true %>
+        <h4>Категорія</h4>
+        <%= select_tag 'category_id', options_for_select(Category.all.collect {|x| [x.title, x.id]}), placeholder: "Введіть категорію", class: 'form-control' %>
+        <h4>Назва</h4>
+        <%= text_field_tag :title_or_description, @title_or_description, placeholder: "Пошук...", class: 'form-control' %>
+        <h4>Адреса</h4>
+        <%= text_field_tag :city, @city, placeholder: "Введіть адресу", class: 'form-control' %>
+        <h4>Ціна</h4>
+        <div class="price" style="display:flex;">
+        <%= text_field_tag :min_price, @min_price, placeholder: "Від", type: "number", :value => 0, class: 'form-control', style: "width:45%;" %><span style="width:20px; text-align:center;">-</span>
+        <%= text_field_tag :max_price, @max_price, placeholder: "До", type: "number", class: 'form-control', style: "width:45%;" %>
+        </div>
+        
+
+        <%= button_tag 'Шукати', type: 'куіуе', class: "btn btn-info" %>
+        <% end %>
+        </div>
     </div>
-  </li>
-  <% end %>
-</ul>
+    <div class="col-md-9 col-sm-9">
+      <ul class="items">
+        <%= render @orders%>
+      </ul>
+    </div>
+    </div>
+  </div>
 
 <%= will_paginate @orders%>
 </div>

@@ -9,7 +9,7 @@
 
 <%= will_paginate @proposals%>
 
-<ul class="items">
+<ol class="items">
   <% @proposals.each do |proposal| %>
   <li id="proposal-<%= proposal.id %>" class="item">
   <div class="row">
@@ -34,13 +34,13 @@
           <b>Ціна:</b> <%= proposal.price %>
         </span>
         <span class="element"> 
-          <b>Створено:</b> <%= proposal.created_at %>
+          <b>Створено:</b> <%= proposal.created_at.strftime("%d.%m.%Y %H:%M") %>
         </span>
         <span class="element"> 
-          <b>Завершить до:</b> <%= proposal.duedate %>
+          <b>Завершити до:</b> <%= proposal.duedate.strftime("%d.%m.%Y %H:%M") %>
         </span>
         <div class="buttons">
-          <% if current_user && current_user?(proposal.user) && proposal.order.status != 'doing' %> 
+          <% if current_user && current_user?(proposal.user) && proposal.order.status != 'Виконується' %> 
             <%= link_to "Видалити", proposal, method: :delete, data: { confirm: "Ти впевнений?" }, class: "btn btn-danger" %>
             <%= link_to "Редагувати", edit_proposal_path(proposal.id), class: "btn btn-warning" %>
           <% end %>
@@ -50,7 +50,7 @@
   </div>
 </li> 
   <% end %>
-</ul>
+</ol>
 
 <%= will_paginate @proposals%>
 </div>

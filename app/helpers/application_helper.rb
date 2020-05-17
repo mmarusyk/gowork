@@ -5,5 +5,13 @@ module ApplicationHelper
       base_title
     else page_title + " | " + base_title
     end
-  end 
+  end
+
+  def info_about_proposals(status = '')
+    if status == 'Активне'
+      "Пропозиції  (#{@order.proposals.count})"
+    else
+      "Виконується"  
+    end
+  end
 end

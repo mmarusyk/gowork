@@ -4,16 +4,23 @@ class OrdersController < ApplicationController
   before_action :status_check
 
   def status_check
-    orders = Order.where('status = ? and duedate < ?', 'active', Time.now)
-    orders.each do |order| 
-      order.status = 'ended' 
+    orders = Order.where('status = ? and duedate < ?', 'Активне', Time.now)
+    orders.each do |order|
+      order.status = 'Незавершене'
       order.save
     end
   end
 
   def index
-      @orders = Order.where('status = ? and duedate >= ?','active', Time.now).paginate(page: params[:page])
-      @orders = Order.all.paginate(page: params[:page]) if current_user.admin?
+    @orders = Order.where('status = ? and duedate >= ? and user_id != ?','Активне', Time.now, current_user.id).paginate(page: params[:page])
+    @orders = Order.where('user_id != ?', current_user.id).paginate(page: params[:page]) if current_user.admin?
+    if (params[:title_or_description] || params[:id] || params[:city] || params[:min_price] || params[:max_price])
+      @orders = @orders.search_by(params[:title_or_description],
+                                  params[:id],
+                                  params[:city],
+                                  params[:min_price],
+                                  params[:max_price])
+    end
   end
 
   def show
@@ -27,13 +34,12 @@ class OrdersController < ApplicationController
 
   def create
     @order = current_user.orders.build(order_params)
-    @order.status = 'active'
+    @order.status = 'Активне'
     if @order.save
       flash[:success] = "Замовлення створено!"
       redirect_to orders_url(current_user)
     else
-      @feed_items = current_user.feed.paginate(page: params[:page])
-      render 'static_pages/home'
+      render 'new'
     end
   end
 
@@ -42,7 +48,7 @@ class OrdersController < ApplicationController
         @order = Order.find_by(id: params[:id])
       else
         @order = current_user.orders.find_by(id: params[:id])
-        if @order.status != 'active'
+        if @order.status != 'Активне'
           flash[:success] = 'Замовлення виконується/завершене'
           redirect_to order_url
         end
@@ -55,7 +61,7 @@ class OrdersController < ApplicationController
     else
       @order = current_user.orders.find_by(id: params[:id])
     end
-    @order.status = 'active'
+    @order.status = 'Активне'
     if @order.update(order_params)
       flash[:success] = 'Дані замовлення оновлено'
       redirect_to order_url
@@ -72,7 +78,7 @@ class OrdersController < ApplicationController
 
   def finish_order
     @order = Order.find(params[:id])
-    @order.update_attribute(:status, 'end')
+    @order.update_attribute(:status, 'Заввершене')
     redirect_to @order
   end
 
