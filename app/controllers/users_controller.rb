@@ -11,6 +11,7 @@ class UsersController < ApplicationController
              else
                User.where(activated: true).paginate(page: params[:page])
              end
+    @users = @users.where('lower(first_name) = ?', params[:search].downcase).paginate(page: params[:page])
   end
 
   def show
