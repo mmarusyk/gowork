@@ -66,7 +66,7 @@ orders = []
   duedate = Faker::Time.forward(days: 10)
   category_id = categories.sample
   price = Faker::Number.between(from: 100.0, to: 500.0).round(2)
-  status = 'active'
+  status = 'Активне'
   users.each { |user|
     order = user.orders.create!(
     title: title,

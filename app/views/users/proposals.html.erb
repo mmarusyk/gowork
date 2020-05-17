@@ -40,7 +40,7 @@
           <b>Завершить до:</b> <%= proposal.duedate %>
         </span>
         <div class="buttons">
-          <% if current_user && current_user?(proposal.user) && proposal.order.status != 'doing' %> 
+          <% if current_user && current_user?(proposal.user) && proposal.order.status != 'Виконується' %> 
             <%= link_to "Видалити", proposal, method: :delete, data: { confirm: "Ти впевнений?" }, class: "btn btn-danger" %>
             <%= link_to "Редагувати", edit_proposal_path(proposal.id), class: "btn btn-warning" %>
           <% end %>

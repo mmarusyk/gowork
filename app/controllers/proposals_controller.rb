@@ -47,7 +47,7 @@ class ProposalsController < ApplicationController
     proposals.each do |proposal|
       proposal.destroy
     end
-    @order.status = 'doing'
+    @order.status = 'Виконується'
     @order.save
     redirect_to request.referrer || orders_url(current_user)
   end

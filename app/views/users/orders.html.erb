@@ -5,10 +5,10 @@
   <h1>Мої замовлення (<%= @user.orders.count %>) </h1>
   <div class="orders_buttons">
     <%= link_to 'Додати', new_order_path, class: "btn btn-lg btn-success button_class" %>
-    <%= link_to 'Активні', user_orders_path(current_user, status: 'active'), class: "btn btn-lg btn-primary button_class" %>
-    <%= link_to 'Виконуються', user_orders_path(current_user, status: 'doing'), class: "btn btn-lg btn-warning button_class" %>
-    <%= link_to 'Завершені', user_orders_path(current_user, status: 'end'), class: "btn btn-lg btn-info button_class" %>
-    <%= link_to 'Незавершені', user_orders_path(current_user, status: 'timeend'), class: "btn btn-lg btn-danger button_class" %>
+    <%= link_to 'Активні', user_orders_path(current_user, status: 'Активне'), class: "btn btn-lg btn-primary button_class" %>
+    <%= link_to 'Виконуються', user_orders_path(current_user, status: 'Виконується'), class: "btn btn-lg btn-warning button_class" %>
+    <%= link_to 'Завершені', user_orders_path(current_user, status: 'Завершене'), class: "btn btn-lg btn-info button_class" %>
+    <%= link_to 'Незавершені', user_orders_path(current_user, status: 'Незавершене'), class: "btn btn-lg btn-danger button_class" %>
   </div>
   <ul class="items">
   <% @orders.each do |order| %>
@@ -33,13 +33,16 @@
             </span>
           </div>
       </div>
-      <div class="col-md-2">
-        <% if current_user?(order.user)  && order.status == 'active' %> 
+      <div class="col-md-2"> 
           <div class="buttons">
-            <%= link_to "Видалити", order, method: :delete, data: { confirm: "Ти впевнений?" }, class: "btn btn-lg btn-danger" %>
-            <%= link_to "Редагувати", edit_order_path, class: "btn btn-lg btn-warning" %>
+          <% if current_user?(order.user)  && ['Активне', 'Незавершене', 'Завершене'].include?(order.status) %>
+              <%= link_to "Видалити", order, method: :delete, data: { confirm: "Ти впевнений?" }, class: "btn btn-lg btn-danger" %>
+            <% end %>
+
+            <% if current_user?(order.user)  && ['Активне', 'Незавершене'].include?(order.status) %>
+              <%= link_to "Редагувати", edit_order_path, class: "btn btn-lg btn-warning" %>
+            <% end %>
           </div>
-        <%end%>
       </div>
     </div>
   </li>

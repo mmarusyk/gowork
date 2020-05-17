@@ -51,14 +51,14 @@ class UsersController < ApplicationController
 
   def orders
     @user = User.find(params[:id])
-    if params[:status] == 'active'
+    if params[:status] == 'Активне'
       @orders = @user.orders.where('status = ? and duedate >=?', params[:status], Time.now).paginate(page: params[:page], per_page: 20)
-    elsif params[:status] == 'doing' || params[:status] == 'end'
+    elsif params[:status] == 'Виконується' || params[:status] == 'Завершене'
       @orders = @user.orders.where('status = ?', params[:status]).paginate(page: params[:page], per_page: 20)
     elsif params[:status] == 'timeend'
       @orders = @user.orders.where('duedate < ?', Time.now).paginate(page: params[:page], per_page: 20)
     else
-      @orders = @user.orders.where('status = ? and duedate >=?', 'active', Time.now).paginate(page: params[:page], per_page: 20)
+      @orders = @user.orders.where('status = ? and duedate >=?', 'Активне', Time.now).paginate(page: params[:page], per_page: 20)
     end
   end
 
