@@ -4,10 +4,9 @@ class OrdersController < ApplicationController
   before_action :status_check
 
   def status_check
-    orders = Order.where('status = ? and duedate < ?', 'Активне', Time.now)
-    orders.each do |order|
-      order.status = 'Незавершене'
-      order.save
+    @orders = Order.where('status = ? and duedate < ?', 'Активне', Time.now)
+    @orders.each do |order|
+      order.update_attribute('status', 'Незавершене')
     end
   end
 
@@ -48,7 +47,7 @@ class OrdersController < ApplicationController
         @order = Order.find_by(id: params[:id])
       else
         @order = current_user.orders.find_by(id: params[:id])
-        if @order.status != 'Активне'
+        if ['Виконується', 'Завершене'].include?(@order.status)
           flash[:success] = 'Замовлення виконується/завершене'
           redirect_to order_url
         end
@@ -78,7 +77,7 @@ class OrdersController < ApplicationController
 
   def finish_order
     @order = Order.find(params[:id])
-    @order.update_attribute(:status, 'Заввершене')
+    @order.update_attribute(:status, 'Завершене')
     redirect_to @order
   end
 
