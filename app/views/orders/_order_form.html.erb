@@ -23,5 +23,5 @@
   <%= f.label :price, 'Бюджет' %>
   <%= f.text_field :price %>
 
-  <%= f.submit "Створити", class: "btn btn-primary" %>
+  <%= f.submit yield(:text_button), class: "btn btn-primary" %>
 <% end %>
