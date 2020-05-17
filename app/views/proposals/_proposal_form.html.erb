@@ -13,5 +13,5 @@
 
   <%= f.hidden_field :order_id %>
 
-  <%= f.submit "Створити", class: "btn btn-success" %>
+  <%= f.submit yield(:text_button), class: "btn btn-success" %>
 <% end %>
