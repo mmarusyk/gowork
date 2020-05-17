@@ -10,9 +10,35 @@
     <%= link_to 'Завершені', user_orders_path(current_user, status: 'Завершене'), class: "btn btn-lg btn-info button_class" %>
     <%= link_to 'Незавершені', user_orders_path(current_user, status: 'Незавершене'), class: "btn btn-lg btn-danger button_class" %>
   </div>
-  <ul class="items">
-    <%= render @orders%>
-  </ul>
+  <div class="row">
+    <div class="col-md-3 col-sm-3">
+      <div class="filter ">
+        <h2>Пошук</h2>
+        <%= form_for "", url: orders_path, role: "search", method: :get do %>
+        <h4>Категорія</h4>
+        <%= select_tag 'id', options_for_select(Category.all.collect {|x| [x.title, x.id]}), placeholder: "Введіть категорію", class: 'form-control' %>
+        <h4>Назва</h4>
+        <%= text_field_tag :title_or_description, @title_or_description, placeholder: "Пошук...", class: 'form-control' %>
+        <h4>Адреса</h4>
+        <%= text_field_tag :city, @city, placeholder: "Введіть адресу", class: 'form-control' %>
+        <h4>Ціна</h4>
+        <div class="price" style="display:flex;">
+        <%= text_field_tag :min_price, @min_price, placeholder: "Від", type: "number", :value => 0, class: 'form-control', style: "width:45%;" %><span style="width:20px; text-align:center;">-</span>
+        <%= text_field_tag :max_price, @max_price, placeholder: "До", type: "number", class: 'form-control', style: "width:45%;" %>
+        </div>
+        
+
+        <%= button_tag 'Шукати', type: 'куіуе', class: "btn btn-info" %>
+        <% end %>
+        </div>
+    </div>
+    <div class="col-md-9 col-sm-9">
+      <ul class="items">
+        <%= render @orders%>
+      </ul>
+    </div>
+    </div>
+  </div>
 
 <%= will_paginate @orders%>
 </div>

@@ -323,11 +323,13 @@ input {
 // ORDERS
 .orders {
   color: $text-color_1;
-  .orders_buttons {
+  &_buttons {
     display: flex;
     .btn {
       margin-right: 5px;
     }
+  }
+  &_main {
   }
   .items {
     padding: 20px 0 10px 0;
