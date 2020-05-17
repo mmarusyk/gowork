@@ -15,20 +15,23 @@
           <b>Місто:</b> <%= order.city %>
         </span>
         <span class="text_item"> 
-          <b>Створено:</b> <%= order.created_at %>
+          <b>Створено:</b> <%= order.created_at.strftime("%d.%m.%Y %H:%M") %>
         </span>
         <span class="text_item"> 
-          <b>Завершується:</b> <%= order.duedate %>
+          <b>Завершується:</b> <%= order.duedate.strftime("%d.%m.%Y %H:%M") %>
         </span>
         <span class="text_item">
           <b>Категорія:</b> <%= order.category.title %>
+        </span>
+        <span class="text_item">
+          <b>Статус:</b> <%= order.status %>
         </span>
       </div>
     </div>
     <div class="col-lg-2 col-md-2">
       <div class="buttons">
-      <span class="status">
-          <b>Статус:</b> <%= order.status %>
+      <span class="money">
+          <b>Бюджет:</b> <%= order.price %> ₴
       </span>
         <% if  current_user && (current_user?(order.user) && order.status == 'Активне' || current_user.admin?) %> 
           <%= link_to "Видалити", order, method: :delete, data: { confirm: "Ти впевнений?" }, class: "btn btn-danger" %>

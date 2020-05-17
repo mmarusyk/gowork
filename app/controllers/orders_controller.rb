@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
   end
 
   def index
-      @orders = Order.where('status = ? and duedate >= ?','Активне', Time.now).paginate(page: params[:page])
+      @orders = Order.where('status = ? and duedate >= ? and user_id != ?','Активне', Time.now, current_user.id).paginate(page: params[:page])
       @orders = Order.all.paginate(page: params[:page]) if current_user.admin?
   end
 
@@ -32,8 +32,7 @@ class OrdersController < ApplicationController
       flash[:success] = "Замовлення створено!"
       redirect_to orders_url(current_user)
     else
-      @feed_items = current_user.feed.paginate(page: params[:page])
-      render 'static_pages/home'
+      render 'new'
     end
   end
 

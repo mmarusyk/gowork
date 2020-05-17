@@ -37,10 +37,10 @@
           <b>Місто:</b> <%= @order.city %>
         </span>
         <span class="item"> 
-          <b>Створено:</b> <%= @order.created_at %>
+          <b>Створено:</b> <%= @order.created_at.strftime("%d.%m.%Y %H:%M") %>
         </span>
         <span class="item"> 
-          <b>Завершується:</b> <%= @order.duedate %>
+          <b>Завершується:</b> <%= @order.duedate.strftime("%d.%m.%Y %H:%M") %>
         </span>
         <span class="item"> 
           <b>Статус:</b> <%= @order.status %>

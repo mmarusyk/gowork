@@ -20,8 +20,8 @@
   <%= f.label :category_id, 'Категорія' %>
   <%= f.select :category_id, Category.all.collect {|x| [x.title, x.id]} %>
 
-  <%= f.label :price, 'Бюджет' %>
-  <%= f.text_field :price %>
+  <%= f.label :price, 'Бюджет ₴' %>
+  <%= f.text_field :price, type: "number", style: "width: 90%; margin-right:20px;" %>
 
   <%= f.submit yield(:text_button), class: "btn btn-primary" %>
 <% end %>
