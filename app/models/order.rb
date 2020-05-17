@@ -10,10 +10,5 @@ class Order < ApplicationRecord
   validates :description, presence: true, length: { maximum: 5000 }
   validates :city, presence: true
   validates :price, presence: true, numericality: {message: 'є неправильним значенням' }
-  validates :deadline_date, presence: true
-
-  private
-  def deadline_date
-    errors.add('Значення дати завершення замовлення', 'є невірним') if self.duedate <= Time.now
-  end
+  validates_datetime :duedate, on_or_after: lambda { Date.current }
 end
