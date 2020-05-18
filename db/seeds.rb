@@ -21,8 +21,9 @@ last_names = %w[Антоненко Василенко Васильчук Вас�
   Сергієнко Середа Таращук Боднаренко Броваренко Броварчук Кравченко
   Кравчук Крамаренко Крамарчук Мельниченко Мірошниченко Шевченко Шевчук
   Шинкаренко Пономаренко Пономарчук Лисенко]
+
 # Generate a bunch of additional users.
-20.times do |n|
+100.times do |n|
   first_name = names.sample
   last_name = last_names.sample
   email = "example-#{n+1}@e.e"
@@ -56,55 +57,60 @@ categories = []
 end
 
 # Generate orders for a subset of users.
-users = User.order(:created_at).take(6)
+users = User.order(:created_at).take(50)
 orders = []
-2.times do
-  title = Faker::Job.title
-  description = Faker::Lorem.sentence(word_count: 150)
-  skills = Faker::Job.key_skill
-  city = Faker::Address.city
-  duedate = Faker::Time.forward(days: 10)
-  category_id = categories.sample
-  price = Faker::Number.between(from: 100.0, to: 500.0).round(2)
-  status = 'Активне'
-  users.each { |user|
+users.each do |user|
+  8.times do
+    title = Faker::Job.title
+    description = Faker::Lorem.sentence(word_count: 150)
+    skills = Faker::Job.key_skill
+    city = Faker::Address.city
+    duedate = Faker::Time.forward(days: 10)
+    category_id = categories.sample
+    price = Faker::Number.between(from: 100.0, to: 500.0).round(2)
+    status = 'Активне'
     order = user.orders.create!(
-    title: title,
-    description: description,
-    skills: skills,
-    city: city,
-    duedate: duedate,
-    category_id: category_id,
-    price: price,
-    status: status
+      title: title,
+      description: description,
+      skills: skills,
+      city: city,
+      duedate: duedate,
+      category_id: category_id,
+      price: price,
+      status: status
     )
-    orders.push order.id
-  }
+    orders.push order
+  end
 end
 
-4.times do
-  content = Faker::Lorem.sentence(word_count: 50)
-  duedate = Faker::Time.forward(days: 10)
-  order_id = orders.sample
-  price = Faker::Number.between(from: 100.0, to: 500.0).round(2)
-  users.each { |user| user.proposals.create!(
-    content: content,
-    duedate: duedate,
-    order_id: order_id,
-    price: price
-  )
-  }
+# Generate proposals for a subset of users.
+orders = orders.take(300)
+orders.each do |order|
+  8.times do
+    content = Faker::Lorem.sentence(word_count: 50)
+    duedate = Faker::Time.forward(days: 10)
+    price = Faker::Number.between(from: 100.0, to: 500.0).round(2)
+    user = users.sample
+    user.proposals.create!(
+      content: content,
+      duedate: duedate,
+      order_id: order.id,
+      price: price
+    )
+  end
 end
 
-proposals = Proposal.order(:created_at).take(10)
-user = User.order(:created_at).take(1)
-10.times do |i|
-  score = 5
-  content = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae sed perferendis libero ducimus optio ipsum.'
-  Response.create!(
-    score: score,
-    content: content,
-    proposal_id:  proposals[i].id,
-    user_id: user[0].id
-  )
+# Generate reviews for a subset of users.
+proposals = Proposal.order(:created_at).take(600)
+proposals.each do |i|
+  8.times do
+    score = rand(1..5)
+    content = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae sed perferendis libero ducimus optio ipsum.'
+    Response.create!(
+      score: score,
+      content: content,
+      proposal_id: i.id,
+      user_id: i.user_id
+    )
+  end
 end
