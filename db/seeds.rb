@@ -82,7 +82,7 @@ orders = []
   }
 end
 
-2.times do
+4.times do
   content = Faker::Lorem.sentence(word_count: 50)
   duedate = Faker::Time.forward(days: 10)
   order_id = orders.sample
@@ -94,4 +94,17 @@ end
     price: price
   )
   }
+end
+
+proposals = Proposal.order(:created_at).take(10)
+user = User.order(:created_at).take(1)
+10.times do |i|
+  score = 5
+  content = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae sed perferendis libero ducimus optio ipsum.'
+  Response.create!(
+    score: score,
+    content: content,
+    proposal_id:  proposals[i].id,
+    user_id: user[0].id
+  )
 end
