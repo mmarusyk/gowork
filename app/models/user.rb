@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :orders, dependent: :destroy
   has_many :proposals, dependent: :destroy
+  has_many :responses, dependent: :destroy
   has_one_attached :avatar
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save :downcase_email
