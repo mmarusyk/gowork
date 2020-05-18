@@ -21,6 +21,8 @@
 
       <%= f.label :password_confirmation, 'Підтвердження пароля' %>
       <%= f.password_field :password_confirmation, class: 'form-control'  %>
+      <%= f.label "Фото профілю"%>
+      <%= f.file_field :avatar%>
 
       <%= f.submit yield(:text_button), class: "btn btn-primary" %>
 <% end %>
