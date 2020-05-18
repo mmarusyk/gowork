@@ -1,0 +1,29 @@
+<li id="response-<%= response.id %>" class="item">
+  <div class="row">
+    <div class="col-lg-1 col-md-1 col-sm-2">
+      <div class="response_gravatar-div">
+        <% if response.user.avatar.attached? %>
+          <image src="<%=(url_for(response.user.avatar))%>" style=" width:80px;">
+        <% else %>
+          <%= link_to gravatar_for(response.user, size: 80), response.user %>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-lg-11 col-md-11 col-sm-10">
+      <div class="response">
+        <span class="response_user">
+          <%= link_to "#{response.user.first_name} #{response.user.last_name}", response.user, class: "user_link" %>
+        </span>
+        <span class="response_order">
+          <%= link_to response.proposal.order.title, response.proposal.order, class: "user_link" %>
+        </span>
+        <span class="response_content">
+          <%= response.content %>
+        </span>
+        <span class="response_score">
+          Оцінка: <%= response.score %>
+        </span>
+      </div>
+    </div>
+  </div>
+</li> 

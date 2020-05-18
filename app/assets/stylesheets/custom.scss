@@ -434,4 +434,36 @@ input {
 }
 }
 
+.responses {
+  color: $text-color_1;
+  .items {
+    .item {
+      display: flex;
+      margin: 10px 10px;
+      border-bottom: 1px solid $border_1;
+      padding-bottom: 10px;
+      .response_gravatar-div {
+      }
+      .response {
+        display: flex;
+        flex-wrap: wrap;
+        margin-left: 10px;
+        &_user {
+          width: 30%;
+        }
+        &_order {
+          width: 70%;
+        }
+        &_content {
+          width: 100%;
+        }
+        &_score {
+          text-align: right;
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
 @import "media";

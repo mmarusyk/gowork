@@ -22,12 +22,12 @@
     </div>
   </div>
 </div>
-<div class="orders">
-  <% if @user.orders.any? %>
-  <h3>Замовлення (<%= @user.orders.count %>)</h3>
+<div class="responses">
+  <% if @user.responses.any? %>
+  <h3>Відгуки (<%= @user.responses.count %>)</h3>
   <ol class="items">
-    <%= render @orders %>
+    <%= render @responses %>
   </ol>
-  <%= will_paginate @orders %>
+  <%= will_paginate @responses %>
   <% end %>
 </div>

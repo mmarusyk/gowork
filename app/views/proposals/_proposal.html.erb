@@ -38,6 +38,9 @@
           <% if current_user && (current_user?(@order.user) || current_user.admin?) && @order.status == 'Активне' %>
             <%= link_to "Вибрати", choose_proposal_path(id: proposal.id), method: :delete, class: "btn btn-primary"%>
           <% end %>
+          <% if current_user && (current_user?(@order.user) || current_user.admin? ) && (['Завершене'].include?(@order.status))%>
+            <%= link_to "Написати відгук", new_response_path(proposal_id: proposal.id, user_id: proposal.user_id), class: "btn btn-primary" %>
+          <%end%>
         </div>
       </div>
     </div>

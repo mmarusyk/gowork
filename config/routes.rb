@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   resources :proposals
   delete 'choose_proposal' => 'proposals#choose_proposal', :as => :choose_proposal
   patch '/orders/:id/finish_order' => 'orders#finish_order', :as => :finish_order
+  # resources :responses, only: [:new, :create]
+  resources :responses
 end
