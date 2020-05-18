@@ -15,7 +15,11 @@
   <div class="row">
     <div class="col-md-1">
       <div class="gravatar-div">
-        <%= link_to gravatar_for(proposal.user, size: 80), proposal.user %>
+        <% if @user.avatar.attached? %>
+          <image src="<%=(url_for(@user.avatar))%>" style=" width:80px;">
+        <% else %>
+          <%= link_to gravatar_for(proposal.user, size: 80), proposal.user %>
+        <% end %>
       </div>
     </div>
     <div class="col-md-8">

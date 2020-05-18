@@ -4,7 +4,11 @@
   <div class="row">
     <div class="col-lg-3 col-md-3 col-sm-3">
       <div class="profile_main">
-        <span><%= gravatar_for(@user, size: 160) %></span>
+        <% if @user.avatar.attached? %>
+          <image src="<%=(url_for(@user.avatar))%>" style=" width:230px;">
+          <% else %>
+          <span><%= gravatar_for(@user, size: 160) %></span>
+        <% end %>
         <div class="email"><%= @user.email %></div>
         <div class="city"><%= @user.city %></div>
         <div class="created_at"> На сайті з <%= @user.created_at.strftime("%d.%m.%Y %H:%M") %></div>
