@@ -1,0 +1,15 @@
+
+<%= form_with(model: @response, local: true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  
+  <%= f.label :content, 'Оцінка' %>
+  <%= f.select :score, options_for_select(["1","2","3","4","5"]), :class => 'genForm_dropBox'  %>
+
+  <%= f.label :duedate, 'Відгук' %>
+  <%= f.text_area :content %>
+
+  <%= f.hidden_field :proposal_id %>
+  <%= f.hidden_field :user_id %>
+
+  <%= f.submit yield(:text_button), class: "btn btn-success"  %>
+<% end %>
