@@ -1,50 +1,38 @@
 <header>
   <div class="container">
     <div class="row">
-      <div class="col-lg-2 col-md-1 col-sm-4">
+      <div class="col-lg-3">
         <a class="logo" href="/">
           <div class="logo_img">
-            <%= image_tag('icons/logo.png', alt: "logo_img", class: "logo_img-tag", style: "width:50px;" ) %></div>
+            <%= image_tag('icons/logo.png', alt: "logo_img", class: "logo_img" ) %></div>
           <div class="logo_title">GoWork</div>
         </a>
       </div>
-      
-      <div class="col-lg-5 col-md-5 col-sm-8">
-        <ul class="menu menu_left">
-          <li class="menu_item"><%= link_to 'Як це працює', '#', class: "menu_link" %></li>
-          <li class="menu_item"><%= link_to 'Про нас', about_path, class: "menu_link" %></li>
-          <li class="menu_item"><%= link_to 'Допомога', help_path, class: "menu_link" %></li>
-        </ul>
-      </div>
-      <div class="col-lg-5 col-md-6 col-sm-12">
-        <ul class="menu menu_right">
+      <div class="col-lg-9">
+        <ul class="menu">
           <% if logged_admin? %>
           <li class="menu_item"> <%= link_to 'Категорії', categories_path, class: "menu_link" %> </li>
           <% end %>
           <% if logged_in? %>
-            <li class="menu_item"> <%= link_to 'Користувачі', users_path, class: "menu_link" %> </li>
-            <li class="menu_item"> <%= link_to 'Замовлення', orders_path, class: "menu_link" %> </li>
-            <li class="menu_item"> <%= link_to 'Заявки', user_proposals_path(current_user), class: "menu_link" %> </li>
-            <li class= "dropdown menu_item">
-              <a href="#" class="dropdown-toggle menu_link" data-toggle="dropdown"> Профіль˅</b> </a> 
-              <ul class="dropdown-menu fix-dropdown">
-                <li class="menu_item">
-                  <%= link_to "Профіль", current_user, class: "menu_link" %>
-                </li>
-                <li class="menu_item">
-                  <%= link_to "Налаштування", edit_user_path(current_user), class: "menu_link" %>
-                </li>
-                <li class="divider"></li>
-                <li class="menu_item">
-                  <%= link_to "Вийти", logout_path, method: :delete, class: "menu_link" %>
-                </li>
-              </ul> 
-            </li>
-            <% else %>
-              <li class="menu_item"><%= link_to 'Увійти', login_path, class: "menu_link" %></li>
-              <li class="menu_item"><%= link_to 'Реєстрація', signup_path, class: "menu_link" %></li>
-              <li class="menu_item"><%= link_to 'Додати замовлення', login_path, class: "menu_link add_order" %></li>
-            <% end %>
+          <li class="menu_item"> <%= link_to 'Користувачі', users_path, class: "menu_link" %> </li>
+          <li class="menu_item"> <%= link_to 'Замовлення', orders_path, class: "menu_link" %> </li>
+          <li class="menu_item"> <%= link_to 'Заявки', user_proposals_path(current_user), class: "menu_link" %> </li>
+          <li class="menu_item">
+            <%= link_to "Профіль", current_user, class: "menu_link" %>
+          </li>
+          <li class="menu_item">
+            <%= link_to "Налаштування", edit_user_path(current_user), class: "menu_link" %>
+          </li>
+          <li class="menu_item">
+            <%= link_to "Вийти", logout_path, method: :delete, class: "menu_link" %>
+          </li>
+          <% else %><li class="menu_item"><%= link_to 'Як це працює', '#', class: "menu_link" %></li>
+          <li class="menu_item"><%= link_to 'Про нас', about_path, class: "menu_link" %></li>
+          <li class="menu_item"><%= link_to 'Допомога', help_path, class: "menu_link" %></li>
+          <li class="menu_item"><%= link_to 'Увійти', login_path, class: "menu_link" %></li>
+          <li class="menu_item"><%= link_to 'Реєстрація', signup_path, class: "menu_link" %></li>
+          <li class="menu_item"><%= link_to 'Додати замовлення', login_path, class: "menu_link add_order" %></li>
+          <% end %>
         </ul>
       </div>
     </div>

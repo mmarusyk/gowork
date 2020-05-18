@@ -27,10 +27,10 @@
       <span class="money">
           <b>Бюджет:</b> <%= order.price %> ₴
       </span>
-        <% if (current_user?(order.user) || current_user.admin?)  && (['Активне', 'Незавершене', 'Завершене'].include?(order.status))%> 
+        <% if (current_user && (current_user?(order.user) || current_user.admin?)  && (['Активне', 'Незавершене', 'Завершене'].include?(order.status)))%> 
           <%= link_to "Видалити", order, method: :delete, data: { confirm: "Ти впевнений?" }, class: "btn btn-danger" %>
         <% end %>
-        <% if (current_user?(order.user) || current_user.admin? ) && (['Активне', 'Незавершене'].include?(order.status))%>
+        <% if (current_user && (current_user?(order.user) || current_user.admin? ) && (['Активне', 'Незавершене'].include?(order.status)))%>
           <%= link_to "Редагувати", edit_order_path(order.id), class: "btn btn-warning" %>
         <%end%>
         <% if current_user && (current_user?(order.user) || current_user.admin? ) && (['Виконується'].include?(order.status))%>

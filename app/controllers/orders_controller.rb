@@ -11,8 +11,12 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.where('status = ? and duedate >= ? and user_id != ?','Активне', Time.now, current_user.id).paginate(page: params[:page])
-    @orders = Order.where('user_id != ?', current_user.id).paginate(page: params[:page]) if current_user.admin?
+    if current_user.nil?
+      @orders = Order.all.paginate(page: params[:page])
+    else
+      @orders = Order.where('status = ? and duedate >= ? and user_id != ?', 'Активне', Time.now, current_user.id).paginate(page: params[:page])
+      @orders = Order.where('user_id != ?', current_user.id).paginate(page: params[:page]) if current_user.admin?
+    end
     if (params[:title_or_description] || params[:id] || params[:city] || params[:min_price] || params[:max_price])
       @orders = @orders.search_by(params[:title_or_description],
                                   params[:id],

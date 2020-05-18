@@ -7,7 +7,7 @@
   <% if logged_in? %>
   <%= link_to 'Мої замовлення', user_orders_path(current_user), class: "btn btn-lg btn-info button_class" %>
   <%= link_to 'Додати замовлення', new_order_path, class: "btn btn-lg btn-success button_class" %>
-  <%end%>
+  <% end %>
   </div>
   <div class="orders_main">
     <div class="row">
