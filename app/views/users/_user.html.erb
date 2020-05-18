@@ -1,7 +1,11 @@
 <li class= "item">
   <div class="information">
     <div class="information_main">
-      <%= gravatar_for user, size: 50 %>
+      <% if user.avatar.attached? %>
+        <image src="<%=(url_for(user.avatar))%>" style=" width:64px;">
+      <% else %>
+        <span><%= gravatar_for(user, size: 64) %></span>
+      <% end %>
       <%= link_to "#{user.first_name} #{user.last_name}", user, class:"user_link" %>
     </div>
     <% if current_user.admin?%>

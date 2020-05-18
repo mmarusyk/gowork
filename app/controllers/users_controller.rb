@@ -26,6 +26,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @user.avatar.attach(params[:avatar])
     if @user.save
       @user.send_activation_email
       flash[:info] = 'Перевір пошту для активації аккаунту'
@@ -90,7 +91,8 @@ class UsersController < ApplicationController
       :city,
       :description,
       :password,
-      :password_confirmation
+      :password_confirmation,
+      :avatar
     )
   end
 
