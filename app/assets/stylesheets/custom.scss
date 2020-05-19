@@ -605,9 +605,20 @@ input {
         &_content {
           width: 100%;
         }
-        &_score {
-          text-align: right;
-          width: 100%;
+      }
+      .score {
+        background-image: url(image_path('icons/shapes-and-symbols.png'));
+        background-size: cover;
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 65px;
+        height: 65px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &_text {
+          padding-top: 5px;
+          font-size: 32px;
         }
       }
     }

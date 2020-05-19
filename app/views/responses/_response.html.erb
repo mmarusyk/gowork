@@ -9,7 +9,7 @@
         <% end %>
       </div>
     </div>
-    <div class="col-lg-11 col-md-11 col-sm-10">
+    <div class="col-lg-10 col-md-10 col-sm-9">
       <div class="response">
         <span class="response_user">
           <%= link_to "#{response.proposal.order.user.first_name} #{response.proposal.order.user.last_name}", response.proposal.user, class: "user_link" %>
@@ -20,8 +20,12 @@
         <span class="response_content">
           <%= response.content %>
         </span>
-        <span class="response_score">
-          Оцінка: <%= response.score %>
+      </div>
+    </div>
+    <div class="col-lg-1 col-md-1 col-sm-1">
+      <div class="score">
+        <span class="score_text">
+          <%= response.score %>
         </span>
       </div>
     </div>
