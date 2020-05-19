@@ -16,6 +16,9 @@
     </div>
     <div class="col-lg-9 col-md-9 col-sm-8">
       <h1 class="name"><%= @user.first_name %> <%= @user.last_name %></h1>
+      <% if @user.responses.any? %>
+      <h3>Рейтинг: <%=(@user.responses.sum(:score).to_f / @user.responses.count).floor(1) %></h3>
+      <% end %>
       <div class="description">
         <%= @user.description %>
       </div>
