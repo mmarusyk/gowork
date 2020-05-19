@@ -218,6 +218,48 @@ footer {
 
 
 
+// HELP
+
+.help {
+  color: $color_1;
+  font-size: 24px;
+  h1 {
+    text-align: center;
+    font-size: 48px;
+  }
+  h2 {
+    text-align: center;
+    font-size: 34px;
+    .icon {
+      width: 64px;
+      padding-right: 20px;
+    }
+  }
+  &_profile, &_order, &_request, &_response {
+    margin-top: 80px;
+  }
+  .items {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .item {
+    width: 100%;
+    margin-top: 40px;
+    a {
+      color: $color_1;
+      transition: all 0.4s;
+      &:hover {
+        color: $color_2;
+        text-decoration: none;
+      }
+    }
+    .dcont {
+      border: 2px solid $color_4;
+      border-radius: 10px;
+      padding: 10px 10px 10px 60px;
+    }
+  }
+}
 
 
 

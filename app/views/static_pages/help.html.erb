@@ -1,46 +1,354 @@
 <% provide(:title, 'Допомога')%>
 
 <div class="help">
-
   <h1>Допомога</h1>
   <div class="help_profile">
-    <h2>Профіль</h2>
-    <div class="item">
-      <div class="question">Як створити профіль</div>
-      <div class="answer">Натисніть на кнопку реєстрації та заповніть форму.</div>
+    <h2><%= image_tag('icons/help/avatar.png', alt: "icon", class: "icon")%>Профіль</h2>
+    <div class="items">
+      <div class="item">
+        <a class="" data-toggle="collapse" href="#collapse01" role="button" aria-expanded="false"
+          aria-controls="collapse01">
+          Як змінити фото профілю?
+        </a>
+        <div class="collapse dcont" id="collapse01">
+          <ol>
+            <li>Перейдіть на сторінку Налаштування.</li>
+            <li>Завантажте зображення</li>
+            <li>Натисніть на кнопку Зберегти.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="item">
+        <a class="" data-toggle="collapse" href="#collapse02" role="button" aria-expanded="false"
+          aria-controls="collapse02">
+          Як змінити інформацію про мене?
+        </a>
+        <div class="collapse dcont" id="collapse02">
+          <ol>
+            <li>Перейдіть на сторінку Налаштування.</li>
+            <li>Введіть в потрібне поле іншу інформацію</li>
+            <li>Натисніть на кнопку Зберегти.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="item">
+        <a class="" data-toggle="collapse" href="#collapse03" role="button" aria-expanded="false"
+          aria-controls="collapse03">
+          Як змінити пароль?
+        </a>
+        <div class="collapse dcont" id="collapse03">
+          <ol>
+            <li>Перейдіть на сторінку Налаштування.</li>
+            <li>Введіть двічі новий пароль</li>
+            <li>Натисніть на кнопку Зберегти.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="item">
+        <a class="" data-toggle="collapse" href="#collapse04" role="button" aria-expanded="false"
+          aria-controls="collapse04">
+          Як відновити пароль?
+        </a>
+        <div class="collapse dcont" id="collapse04">
+          <ol>
+            <li>Перейдіть на сторінку Увійти</li>
+            <li>Натисніть на кнопку Забув пароль</li>
+            <li>Введіть електронну адресу</li>
+            <li>В листі натисніть підтвердити</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="item">
+        <a class="" data-toggle="collapse" href="#collapse05" role="button" aria-expanded="false"
+          aria-controls="collapse05">
+          Як змінити фото профілю?
+        </a>
+        <div class="collapse dcont" id="collapse05">
+          <ol>
+            <li>Перейдіть на сторінку Налаштування.</li>
+            <li>Завантажте зображення</li>
+            <li>Натисніть на кнопку Зберегти.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="item">
+        <a class="" data-toggle="collapse" href="#collapse06" role="button" aria-expanded="false"
+          aria-controls="collapse06">
+          Як отримати права адміністратора?
+        </a>
+        <div class="collapse dcont" id="collapse06">
+          <ol>
+            <li>Для отримання прав зв'яжіться із власником сайту.</li>
+          </ol>
+        </div>
+      </div>
     </div>
-
-    <div class="item">
-      <div class="question">Як відновити пароль</div>
-      <div class="answer">Натисніть на кнопку в меню увійти забули пароль.</div>
-    </div> 
   </div>
-
   <div class="help_order">
-    <h2>Замовлення</h2>
-    <div class="item">
-      <div class="question">Як створити замовлення</div>
-      <div class="answer">Увійдіть або створіть профіль та натисніть на кнопку створити замовлення.</div>
+    <h2><%= image_tag('icons/help/business.png', alt: "icon", class: "icon")%>Замовлення</h2>
+    <div class="items">
+      <div class="item">
+        <a class="" data-toggle="collapse" href="#collapse10" role="button" aria-expanded="false"
+          aria-controls="collapse10">
+          Як створити замовлення?
+        </a>
+        <div class="collapse dcont" id="collapse10">
+          <ol>
+            <li>Перейдіть на сторінку Замовлення.</li>
+            <li>Натисніть на кнопку додати замовлення.</li>
+            <li>Введіть Назву, Опис, Навичка, Місцезнаходження, Дату завершення, Категорію та Бюджет замовлення.</li>
+            <li>Натисніть на кнопку Створити.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="item">
+        <a class="" data-toggle="collapse" href="#collapse11" role="button" aria-expanded="false"
+          aria-controls="collapse11">
+          Як переглянути власні замовлення?
+        </a>
+        <div class="collapse dcont" id="collapse11">
+          <ol>
+            <li>Перейдіть на сторінку Мої Замовлення.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="item">
+        <a class="" data-toggle="collapse" href="#collapse12" role="button" aria-expanded="false"
+          aria-controls="collapse12">
+          Як скористатись пошуком моїх замовлень?
+        </a>
+        <div class="collapse dcont" id="collapse12">
+          <ol>
+            <li>Перейдіть на сторінку Мої Замовлення.</li>
+            <li>Виберіть статус замовлення.</li>
+            <li>Виберіть категорію.</li>
+            <li>За необхідності введіть назву замовлення або опис.</li>
+            <li>За необхідності введіть адресу.</li>
+            <li>За необхідності введіть мінімальну та максимальну можливу ціну.</li>
+            <li>Натисніть на кнопку шукати.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="item">
+        <a class="" data-toggle="collapse" href="#collapse13" role="button" aria-expanded="false"
+          aria-controls="collapse13">
+          Як скористатись пошуком замовлень інших користувачів?
+        </a>
+        <div class="collapse dcont" id="collapse13">
+          <ol>
+            <li>Перейдіть на сторінку Замовлення.</li>
+            <li>Виберіть категорію.</li>
+            <li>За необхідності введіть назву замовлення або опис.</li>
+            <li>За необхідності введіть адресу.</li>
+            <li>За необхідності введіть мінімальну та максимальну можливу ціну.</li>
+            <li>Натисніть на кнопку шукати.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="item">
+        <a class="" data-toggle="collapse" href="#collapse14" role="button" aria-expanded="false"
+          aria-controls="collapse14">
+          Що таке статус замовлення?
+        </a>
+        <div class="collapse dcont" id="collapse14">
+          <p>Кожне замовлення має 4 статуси:</p>
+          <ol>
+            <li><button class="btn btn-primary">Активні</button> - ті в яких не вийшов термін завершення та відкриті для
+              подачі заявок.</li>
+            <li><button class="btn btn-warning">Виконуються</button> - вибраний виконавець даного замовлення і в даний
+              час виконується.</li>
+            <li><button class="btn btn-info">Завершені</button> - замовлення було виконано виконавцем і замовник
+              підтвердив виконання.</li>
+            <li><button class="btn btn-danger">Незавершені</button> - вийшов термін завершення для замовлення</li>
+          </ol>
+        </div>
+      </div>
+      <div class="item">
+        <a class="" data-toggle="collapse" href="#collapse15" role="button" aria-expanded="false"
+          aria-controls="collapse15">
+          Як переглянути детальну інформацію про замовлення?
+        </a>
+        <div class="collapse dcont" id="collapse15">
+          <ol>
+            <li>Перейдіть на сторінку Замовлення.</li>
+            <li>Знайдіть потрібне замовлення</li>
+            <li>Натисніть на назву замовлення</li>
+          </ol>
+        </div>
+      </div>
+      <div class="item">
+        <a class="" data-toggle="collapse" href="#collapse16" role="button" aria-expanded="false"
+          aria-controls="collapse16">
+          Як переглянути кандидатів на виконання замовлення?
+        </a>
+        <div class="collapse dcont" id="collapse16">
+          <ol>
+            <li>Перейдіть на сторінку Замовлення.</li>
+            <li>Знайдіть потрібне замовлення</li>
+            <li>Натисніть на назву замовлення</li>
+            <li>Внизу замовлення буде список користувачів, які бажають виконати замовлення</li>
+          </ol>
+        </div>
+      </div>
+      <div class="item">
+        <a class="" data-toggle="collapse" href="#collapse17" role="button" aria-expanded="false"
+          aria-controls="collapse17">
+          Як видалити замовлення?
+        </a>
+        <div class="collapse dcont" id="collapse17">
+          <ol>
+            <li>Перейдіть на сторінку Мої Замовлення.</li>
+            <li>Знайдіть потрібне замовлення</li>
+            <li>Натисніть на кнопку видалити</li>
+          </ol>
+        </div>
+      </div>
+      <div class="item">
+        <a class="" data-toggle="collapse" href="#collapse18" role="button" aria-expanded="false"
+          aria-controls="collapse18">
+          Як редагувати замовлення?
+        </a>
+        <div class="collapse dcont" id="collapse18">
+          <ol>
+            <li>Перейдіть на сторінку Мої Замовлення.</li>
+            <li>Знайдіть потрібне замовлення</li>
+            <li>Натисніть на кнопку редагувати</li>
+            <li>Введіть інші дані замовлення</li>
+            <li>Натисніть на кнопку Зберегти</li>
+          </ol>
+        </div>
+      </div>
+      <div class="item">
+        <a class="" data-toggle="collapse" href="#collapse19" role="button" aria-expanded="false"
+          aria-controls="collapse19">
+          Чи бачать користувачі мої замовлення?
+        </a>
+        <div class="collapse dcont" id="collapse19">
+          <p>Користувачі сайту та гості бачать тільки замовлення статус яких є активним.</p>
+        </div>
+      </div>
     </div>
   </div>
-
   <div class="help_request">
-    <h2>Заявки</h2>
-    <div class="item">
-      <div class="question">Як подати заявку на виконання замовлення</div>
-      <div class="request">Перейдіть на потрібне замовлення та натисніть на кнопку подати заявку.</div>
+    <h2><%= image_tag('icons/help/people.png', alt: "icon", class: "icon")%>Заявки</h2>
+
+    <div class="items">
+      <div class="item">
+        <a class="" data-toggle="collapse" href="#collapse20" role="button" aria-expanded="false"
+          aria-controls="collapse20">
+          Що таке заявка?
+        </a>
+        <div class="collapse dcont" id="collapse20">
+          <p>Заявка - це бажання виконати замовлення користувача іншим користувачем сайту</p>
+        </div>
+      </div>
+      <div class="item">
+        <a class="" data-toggle="collapse" href="#collapse21" role="button" aria-expanded="false"
+          aria-controls="collapse21">
+          Як створити заявку?
+        </a>
+        <div class="collapse dcont" id="collapse21">
+          <ol>
+            <li>Перейдіть на сторінку Мої Замовлення.</li>
+            <li>Знайдіть потрібне замовлення</li>
+            <li>Натисніть на назву Замовлення</li>
+            <li>Натисніть на кнопку Подати заявку</li>
+            <li>Введіть інформацію про заявку</li>
+            <li>Натисніть на кнопек Створити</li>
+          </ol>
+        </div>
+      </div>
+      <div class="item">
+        <a class="" data-toggle="collapse" href="#collapse21" role="button" aria-expanded="false"
+          aria-controls="collapse21">
+          Як переглянути мої заявки?
+        </a>
+        <div class="collapse dcont" id="collapse21">
+          <ol>
+            <li>Перейдіть на сторінку Заявки.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="item">
+        <a class="" data-toggle="collapse" href="#collapse22" role="button" aria-expanded="false"
+          aria-controls="collapse22">
+          Як видалити заявку?
+        </a>
+        <div class="collapse dcont" id="collapse22">
+          <ol>
+            <li>Перейдіть на сторінку Мої Заявки.</li>
+            <li>Знайдіть потрібну заявку</li>
+            <li>Натисніть на кнопку видалити</li>
+          </ol>
+        </div>
+      </div>
+      <div class="item">
+        <a class="" data-toggle="collapse" href="#collapse23" role="button" aria-expanded="false"
+          aria-controls="collapse23">
+          Як редагувати заявку?
+        </a>
+        <div class="collapse dcont" id="collapse23">
+          <ol>
+            <li>Перейдіть на сторінку Мої Заявки.</li>
+            <li>Знайдіть потрібну заявку</li>
+            <li>Натисніть на кнопку редагувати</li>
+            <li>Введіть інші дані заявки</li>
+            <li>Натисніть на кнопку Зберегти</li>
+          </ol>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <div class="help_response">
-    <h2>Відгуки</h2>
-  </div>
-
-  <div class="help_search">
-    <h2>Пошук</h2>
-  </div>
-
-  <div class="help_admin">
-    <h2>Адміністратори</h2>
+    <div class="help_response">
+      <h2><%= image_tag('icons/help/interface.png', alt: "icon", class: "icon")%>Відгуки</h2>
+      <div class="items">
+      <div class="item">
+        <a class="" data-toggle="collapse" href="#collapse24" role="button" aria-expanded="false"
+          aria-controls="collapse24">
+          Як створити відгук?
+        </a>
+        <div class="collapse dcont" id="collapse24">
+          <ol>
+            <li>Перейдіть на сторінку Мої Замовлення.</li>
+            <li>Знайдіть потрібне замовлення</li>
+            <li>Натисніть на кнопку Написати відгук</li>
+            <li>В поле Оцінка виставте оцінку від 1 до 5 і в поле Відгук напишіть відгук.(за бажанням)</li>
+          </ol>
+        </div>
+      </div>
+      <div class="item">
+        <a class="" data-toggle="collapse" href="#collapse25" role="button" aria-expanded="false"
+          aria-controls="collapse25">
+          Як переглянути відгук через користувача?
+        </a>
+        <div class="collapse dcont" id="collapse25">
+          <ol>
+            <li>Перейдіть на сторінку Користувачі.</li>
+            <li>Знайдіть потрібного користувача</li>
+            <li>Натисніть на ім'я користувача</li>
+            <li>Внизу інформації користувача будуть відгук.</li>
+          </ol>
+        </div>
+      </div>
+      <div class="item">
+        <a class="" data-toggle="collapse" href="#collapse26" role="button" aria-expanded="false"
+          aria-controls="collapse26">
+          Як переглянути відгук через замовлення?
+        </a>
+        <div class="collapse dcont" id="collapse26">
+          <ol>
+            <li>Перейдіть на сторінку Мої замовлення.</li>
+            <li>Знайдіть потрібне замовлення в розділі Завершене</li>
+            <li>Натисніть на назву замовлення</li>
+            <li>Перейдіть на користувача</li>
+            <li>Внизу інформації користувача будуть відгук.</li>
+          </ol>
+        </div>
+      </div>
+      </div>
+    </div>
   </div>
 </div>
