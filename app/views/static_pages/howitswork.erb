@@ -1,0 +1,75 @@
+<% provide(:title, 'Як це працює')%>
+<div class="howitswork">
+  <h1>Як працює gowork платформа?</h1>
+  <h2>Шукаєш виконавця?</h2>
+  <div class="for_worker">
+    <div class="item">
+      <%= image_tag('icons/howitswork/file.png', alt: "icon", class: "icon")%>
+      <h3>Опублікуйте замовлення</h3>
+      <p>Публікація замовлення є безкоштовною. ви автоматично почнете отримувати заявки від користуівчів. Ви зможете переглядати їхні профілі та відгуки з попередніх робіт.</p>
+    </div>
+    <div class="direction">
+      <%= image_tag('icons/howitswork/arrows.png', alt: "icon", class: "icon")%>
+    </div>
+    <div class="item">
+      <%= image_tag('icons/howitswork/avatar.png', alt: "icon", class: "icon")%>
+      <h3>Оберіть ідеального виконавця</h3>
+      <p>Перегляньте профілі, порівняйте пропозиції та оберіть найкращий для вас варіант.</p>
+    </div>
+    <div class="direction">
+      <%= image_tag('icons/howitswork/arrows.png', alt: "icon", class: "icon")%>
+    </div>
+    <div class="item">
+      <%= image_tag('icons/howitswork/hand.png', alt: "icon", class: "icon")%>
+      <h3>Завершіть замовлення</h3>
+      <p>Залиште відгук про виконану роботу виконавцем. Саме ваш відгук допомагає іншим користувачам вибирати кращих.</p>
+    </div>
+    <div class="item">
+      <% if logged_in? %>
+      <%= link_to 'Додати замовлення', new_order_path, class: "menu_link add_order" %>
+      <% else %>
+      <%= link_to 'Додати замовлення', signup_path, class: "menu_link add_order" %>
+      <% end %>
+    </div>
+  </div>
+
+  <h2>Шукаєш роботу?</h2>
+  <div class="for_user">
+    <div class="item">
+      <%= image_tag('icons/howitswork/monitor.png', alt: "icon", class: "icon")%>
+      <h3>Заповніть профіль</h3>
+      <p>Вкажіть ваше ім'я та прізвище, опишіть ваші навички та спеціалізацію, завантажте світлину проіфлю, підтвердіть ваш email.</p>
+    </div>
+    <div class="direction">
+      <%= image_tag('icons/howitswork/arrows.png', alt: "icon", class: "icon")%>
+    </div>
+    <div class="item">
+      <%= image_tag('icons/howitswork/business.png', alt: "icon", class: "icon")%>
+      <h3>Шукайте замовлення</h3>
+      <p>Знайдіть замовлення яке ви зможете виконати. Використовуйте фільтри на сайті для ефективного пошуку замовлень.</p>
+    </div>
+    <div class="direction">
+      <%= image_tag('icons/howitswork/arrows.png', alt: "icon", class: "icon")%>
+    </div>
+    <div class="item">
+      <%= image_tag('icons/howitswork/file1.png', alt: "icon", class: "icon")%>
+      <h3>Напишіть заявку</h3>
+      <p>Напишіть найкраще з можливих заявок по замовленню. Поясніть чому саме ви є найкращою кандидатурою для виконання даного замовлення.</p>
+    </div>
+    <div class="direction">
+      <%= image_tag('icons/howitswork/arrows.png', alt: "icon", class: "icon")%>
+    </div>
+    <div class="item">
+      <%= image_tag('icons/howitswork/man.png', alt: "icon", class: "icon")%>
+      <h3>Отримайте роботу</h3>
+      <p>Виконуйте роботу і отримуйте обумовлену оплату.</p>
+    </div>
+    <div class="item">
+      <% if logged_in? %>
+      <%= link_to 'Шукати замовлення', orders_path, class: "menu_link add_order" %>
+      <% else %>
+      <%= link_to 'Шукати замовлення', orders_path, class: "menu_link add_order" %>
+      <% end %>
+    </div>
+  </div>
+</div>

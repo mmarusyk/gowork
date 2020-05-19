@@ -26,7 +26,8 @@
           <li class="menu_item">
             <%= link_to "Вийти", logout_path, method: :delete, class: "menu_link" %>
           </li>
-          <% else %><li class="menu_item"><%= link_to 'Як це працює', '#', class: "menu_link" %></li>
+          <% else %>
+          <li class="menu_item"><%= link_to 'Як це працює', howitswork_path, class: "menu_link" %></li>
           <li class="menu_item"><%= link_to 'Про нас', about_path, class: "menu_link" %></li>
           <li class="menu_item"><%= link_to 'Допомога', help_path, class: "menu_link" %></li>
           <li class="menu_item"><%= link_to 'Увійти', login_path, class: "menu_link" %></li>
