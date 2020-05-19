@@ -1,31 +1,20 @@
 @media ( max-width: 1200px ) {
   header {
+    .logo {
+      &_img {
+        width: 55px;
+      }
+      &_title {
+        font-size: 28px;
+      }
+    }
     .menu {
-      &_left {
-        padding-left: 100px;
-      }
+      padding-top: 22px;
       &_item {
-        padding-right: 4px;
-      }
-      &_right {
-        .menu_item {
-          padding-right: 8px;
-        }
+        padding-right: 6px;
       }
       &_link {
         font-size: 14px;
-      }
-    }
-  }
-  .orders {
-    .items {
-      .item {
-        .gravatar-div {
-          margin-top: 25px;
-        }
-        .text {
-          padding-left: 30px;
-        }
       }
     }
   }
@@ -33,100 +22,466 @@
 
 @media ( max-width: 991px ) {
   header {
-    height: 110px;
+    .logo {
+      &_img {
+        width: 50px;
+      }
+      &_title {
+        font-size: 26px;
+      }
+    }
     .menu {
-      &_left {
-        padding-left: 0px;
-        justify-content: space-between;
-      }
+      padding-top: 22px;
       &_item {
-        padding-right: 22px;
-      }
-      &_right {
-        justify-content: space-between;
+        padding-right: 4px;
       }
       &_link {
-        font-size: 16px;
+        font-size: 12px;
+      }
+    }
+    .add_order {
+      border-radius: 4px;
+      padding: 6px;
+    }
+  }
+
+  footer {
+    font-size: 14px;
+  }
+
+  .presentation {
+    h1 {
+      font-size: 40px;
+    }
+    &_items {
+      .title {
+        font-size: 20px;
+      }
+      .desc {
+        font-size: 14px;
       }
     }
   }
-  .fix-dropdown {
-    margin-left: -80px;
-  }
-  .orders {
+  .category {
+    h2 {
+      font-size: 40px;
+    }
     .items {
+      padding-top: 10px;
       .item {
-        .text {
-          padding-left: 20px;
-        }
+        width: 150px;
+        padding-top: 50px;
       }
+    }
+  }
+  .cities {
+    h2 {
+      font-size: 40px;
+    }
+    .items {
+      padding-top: 10px;
+      .item {
+        width: 150px;
+        padding-top: 50px;
+      }
+    }
+  }
+  .howitswork {
+    font-size: 18px;
+    h1 {
+      font-size: 40px;
+    }
+    h2 {
+      font-size: 30px;
+      margin-top: 40px;
+    }
+    h3 {
+      font-size: 26px;
+    }
+    .item {
+      margin-top: 30px;
+    }
+  }
+  .aboutus {
+    font-size: 18px;
+    h1 {
+      font-size: 40px;
+    }
+    h2 {
+      font-size: 30px;
+      margin-top: 40px;
+    }
+  }
+  .help {
+    font-size: 18px;
+    h1 {
+      font-size: 40px;
+    }
+    h2 {
+      font-size: 28px;
+    }
+    &_profile, &_order, &_request, &_response {
+      margin-top: 40px;
+    }
+    .item {
+      margin-top: 20px;
     }
   }
 }
 
 @media ( max-width: 767px ) {
   header {
+    height: 55px;
     .logo {
-      margin-left: 20%;
+      height: 55px;
     }
-    position: relative;
-    height: 65vh;
     .menu {
-      flex-wrap: wrap;
-      &_left {
-        padding-left: 0px;
-        justify-content: space-between;
-      }
+      position: fixed;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      top: 0;
+      // right: 0
+      left: -100%;
+      width: 80%;
+      height: 100vh;
+      padding: 20px 15px;
+      background-color: rgba(0, 0, 0, .8);
+      transition: all 0.5s;
       &_item {
         width: 100%;
-        padding-right: 22px;
+        text-align: center;
+        padding: 10px 0;
       }
-      &_right {
-        justify-content: space-between;
-        padding-left: 0;
+      &_active {
+        left: 0;
+      }
+      &_item {
+        padding-right: 0;
+        border: none;
       }
       &_link {
-        font-size: 18px;
+        font-size: 20px;
+      } 
+    }
+    .hamburger {
+      display: block;
+      position: absolute;
+      right: 10px;
+      top: 30px;
+      transform: translateY(-50%);
+      width: 30px;
+      height: 12px;
+      span {
+        display: block;
+        background-color: #EDF5E1;;
+        height: 2px;
+        width: 100%;
+        margin-bottom: 2px;
+        transition: all 0.5s;
+      }
+      &_active {
+        span {
+          margin-bottom: -1px;
+          &:nth-child(1) {
+            transform: translateY(3px) rotate(-45deg);
+          }
+          &:nth-child(2) {
+            display: none;
+          }
+          &:nth-child(3) {
+            transform: translateY(3px) rotate(45deg);
+          }
+        }
       }
     }
   }
-  .fix-dropdown {
-    width: 100vw;
-    margin-left: -14px;
+
+  footer {
+    font-size: 14px;
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      justify-content: center;
+    }
+    .info, .links {
+      margin-top: 20px;
+    }
   }
+
+  .presentation {
+    h1 {
+      font-size: 30px;
+    }
+    &_items {
+      .item {
+        flex-wrap: wrap;
+      }
+      .icon {
+        width: 260px;
+      }
+    }
+  }
+  .category {
+    h2 {
+      font-size: 30px;
+    }
+    .items {
+      padding-top: 10px;
+      .item {
+        width: 100px;
+        padding-top: 40px;
+      }
+    }
+  }
+  .cities {
+    h2 {
+      font-size: 30px;
+    }
+    .items {
+      padding-top: 10px;
+      .item {
+        width: 100px;
+        padding-top: 40px;
+      }
+    }
+  }
+  .howitswork {
+    font-size: 14px;
+    h1 {
+      font-size: 30px;
+    }
+    h2 {
+      font-size: 24px;
+      margin-top: 30px;
+    }
+    h3 {
+      font-size: 18px;
+    }
+    .item {
+      margin-top: 20px;
+    }
+  }
+  .aboutus {
+    font-size: 14px;
+    h1 {
+      font-size: 30px;
+    }
+    h2 {
+      font-size: 24px;
+      margin-top: 30px;
+    }
+  }
+  .help {
+    font-size: 14px;
+    h1 {
+      font-size: 30px;
+    }
+    h2 {
+      font-size: 22px;
+    }
+    &_profile, &_order, &_request, &_response {
+      margin-top: 30px;
+    }
+    .item {
+      margin-top: 20px;
+    }
+  }
+  
+  .categories {
+    .item {
+      flex-wrap: wrap;
+      .text {
+        .title {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+  .users {
+    .search {
+      padding-left: 0px;
+      .input {
+        width: 75%;
+      }
+      .button {
+        width: 10%;
+      }
+    }
+    .items{
+    .item {
+      .information {
+        &_main {
+          width: 100%;
+        }
+        .user_link {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+  }
+
+
   .orders {
     h1 {
-      font-size: 32px;
+      font-size: 28px;
     }
-    .orders_buttons {
+    h2 {
+      font-size: 24px;
+    }
+    h4 {
+      font-size: 16px;
+    }
+    .search_btn {
+      width: 100%;
+    }
+    &_buttons {
       flex-wrap: wrap;
       .btn {
-        width: 48%;
-        margin: 2px;
-        white-space: normal;
+        margin-top: 5px;
+        margin-right: 5px;
+        width: 100%;
       }
     }
     .items {
       .item {
+        margin-bottom: 5px;
+        padding-bottom: 5px;
         .text {
           padding-left: 0px;
-          font-size: 16px;
           &_item {
             padding-left: 10px;
-            width: 100%;
-            font-size: 14px;
+            width: 45%;
+            font-size: 12px;
           }
           .title {
             width: 100%;
-            font-size: 22px;
-            
+            font-size: 18px;
           }
         }
-        .buttons {
-          .btn {
-            width: 48%;
-            margin: 2px;
-            white-space: normal;
+        .money {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+
+
+  
+.order-more{
+  padding: 10px 0 10px 0;
+  font-size: 12px;
+  .labell {
+    margin-top: 10px;
+    font-size: 20px;
+  }
+  .title {
+    font-size: 28px;
+  }
+  .price {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-size: 20px;
+  }
+  .extended-data {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    .item {
+      margin-right: 20px;
+    }
+  }
+  .user_info {
+    display: flex;
+    flex-wrap: wrap;
+    .item {
+      margin-top: 10px;
+      margin-right: 40px;
+    }
+    .llabel {
+    width: 100%;
+    margin-top: 15px;
+    font-size: 20px;
+    padding-top: 0;
+    }
+  }
+  }
+  .menu {
+    .buttons {
+      .btn {
+        width: 100%;
+        margin-top:2px;
+      }
+    }
+  }
+
+  .proposals {
+    .items {
+      .item {
+        .gravatar-div {
+          text-align: center;
+        }
+        .text {
+          margin-left: 0px;
+          .user {
+            font-size: 18px;
+          }
+          .content {
+            font-size: 12px;
+          }
+        }
+        .data {
+          font-size: 12px;
+          .buttons {
+            .btn {
+              width: 100%;
+              margin-top: 2px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  .responses {
+    .items {
+      .item {
+        margin: 5px 5px;
+        padding-bottom: 40px;
+        .response {
+          margin-left: 5px;
+          &_user {
+            width: 100%;
+            text-align: center;
+          }
+          &_order {
+            width: 100%;
+            text-align: center;
+          }
+          &_content {
+            width: 100%;
+          }
+          &_gravatar-div {
+            width: 100%;
+            text-align: center;
+          }
+        }
+        .score {
+          position: absolute;
+          width: 32px;
+          height: 32px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          left: 50%;
+          transform: translateX(-50%);
+          &_text {
+            padding-top: 5px;
+            font-size: 22px;
           }
         }
       }
@@ -134,46 +489,30 @@
   }
 
   .profile {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+    .email {
+      font-size: 18px;
+      padding-top: 10px;
+    }
+    .city {
+      font-size: 14px;
+      padding-top: 5px
+    }
+    .created_at {
+      font-size: 14px;
+      padding-top: 5px
+    }
     .name {
-      text-align: center;
-      width: 100%;
+      font-size: 28px;
+    }
+    h3 {
+      font-size: 18px;
     }
     .description {
-      width: 100%;
-    }
-  }
-  footer{
-    .social, .links, .info {
-      display: flex;
-      width: 100%;
-      flex-wrap: wrap;
-    }
-  }
-  .presentation {
-    h1 {
-      font-size: 30px;
-    }
-    &_items {
-      .item {
-        display: flex;
-        flex-wrap: wrap;
-        .icon {
-          width: 260px;
-        }
-        .title {
-          font-size: 22px;
-        }
-      }
-    }
-  }
-  .category, .cities {
-    h2 {
-      font-size: 30px;
-    }
-    .items {
-      .item {
-        width: 120px;
-      }
+      font-size: 12px;
+      padding-top: 5px;
     }
   }
 }

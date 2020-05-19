@@ -1,14 +1,14 @@
 <header>
   <div class="container">
     <div class="row">
-      <div class="col-lg-3">
+      <div class="col-lg-3 col-md-3 col-sm-3">
         <a class="logo" href="/">
           <div class="logo_img">
             <%= image_tag('icons/logo.png', alt: "logo_img", class: "logo_img" ) %></div>
           <div class="logo_title">GoWork</div>
         </a>
       </div>
-      <div class="col-lg-9">
+      <div class="col-lg-9 col-md-9 col-sm-9">
         <ul class="menu">
           <% if logged_admin? %>
           <li class="menu_item"> <%= link_to 'Категорії', categories_path, class: "menu_link" %> </li>
@@ -37,5 +37,10 @@
         </ul>
       </div>
     </div>
+  </div>
+  <div class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
 </header>
