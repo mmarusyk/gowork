@@ -46,6 +46,12 @@
           <b>Статус:</b> <%= @order.status %>
         </span>
       </div>
+      <div class="user_info">
+        <span class="item llabel">Про замовника</span>
+        <span class="item"><%= link_to "#{@order.user.first_name} #{@order.user.last_name}", @order.user, class: "llabel_link_profile" %></span>
+        <span class="item"><b>Email:</b> <%= @order.user.email %></span>
+        <span class="item"><b>Рейтинг: </b> <%= (@order.user.responses.sum(:score).to_f / @order.user.responses.count).floor(1) %></span>
+      </div>
     </div>
   </div>
       
