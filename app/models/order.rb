@@ -22,6 +22,6 @@ class Order < ApplicationRecord
     #   price >= #{min_price} AND price <= #{max_price} ")
 
     where("category_id = '#{category_id}' AND 
-    '#{title_or_description}' IS NULL OR (' ' || (LOWER(title) || ' ') LIKE '%#{title_or_description.downcase}%' ")
+    '#{title_or_description}' IS NULL OR (LOWER(title) LIKE '%#{title_or_description.downcase}%' ")
   end
 end
