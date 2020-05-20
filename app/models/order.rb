@@ -24,6 +24,6 @@ class Order < ApplicationRecord
     where("category_id = '#{category_id}' AND 
     '#{title_or_description}' IS NULL OR ' ' || (LOWER(title) || ' ' LIKE '%#{title_or_description.downcase}%' OR 
     '#{title_or_description}' IS NULL OR ' ' || (LOWER(description) || ' ' LIKE '%#{title_or_description.downcase}%' AND 
-    '#{city}' IS NULL ' ' || (LOWER(city) || ' ' LIKE '%#{city.downcase}%'")
+    '#{city}' IS NULL OR ' ' || (LOWER(city) || ' ' LIKE '%#{city.downcase}%'")
   end
 end
