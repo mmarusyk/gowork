@@ -105,10 +105,15 @@ orders = Order.where('status = ?', 'Завершене')
 orders.each do |i|
     score = rand(1..5)
     content = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae sed perferendis libero ducimus optio ipsum.'
+    usr = i.proposals.first.user_id
+    prs = i.proposals.first.id
     Response.create!(
       score: score,
       content: content,
-      proposal_id: i.proposals.first.id,
-      user_id: i.proposals.first.user_id
+      proposal_id: prs,
+      user_id: usr
     )
+    i.proposals.each do |j|
+      j.destroy unless j.user_id == usr && prs == j.id
+    end
 end
