@@ -100,7 +100,7 @@ orders.each do |order|
   end
 end
 
-# Generate reviews for a subset of users.
+# Generate responses for a subset of users.
 orders = Order.where('status = ?', 'Завершене')
 orders.each do |i|
     score = rand(1..5)
@@ -109,6 +109,6 @@ orders.each do |i|
       score: score,
       content: content,
       proposal_id: i.proposals.first.id,
-      user_id: i.user_id
+      user_id: i.proposals.first.user_id
     )
 end

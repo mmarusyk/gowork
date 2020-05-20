@@ -12,7 +12,7 @@
     <div class="col-lg-10 col-md-10 col-sm-8">
       <div class="response">
         <span class="response_user">
-          <%= link_to "#{response.proposal.order.user.first_name} #{response.proposal.order.user.last_name}", response.proposal.user, class: "user_link" %>
+          <%= link_to "#{response.proposal.order.user.first_name} #{response.proposal.order.user.last_name}", response.proposal.order.user, class: "user_link" %>
         </span>
         <span class="response_order">
           <%= link_to response.proposal.order.title, response.proposal.order, class: "user_link" %>

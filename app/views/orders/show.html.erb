@@ -64,7 +64,7 @@
         <% if current_user && (current_user?(@order.user) || current_user.admin? ) && (['Активне', 'Незавершене'].include?(@order.status))%>
           <%= link_to "Редагувати", edit_order_path(@order.id), class: "btn btn-warning" %>
         <%end%>
-        <% if current_user && !(current_user?(@order.user)) %> 
+        <% if current_user && !(current_user?(@order.user)) && (['Активне'].include?(@order.status))%> 
           <%= link_to "Подати заявку", new_proposal_path(order_id: @order.id), class: "btn btn-success" %>
         <% end %>
         <% if current_user && (current_user?(@order.user) || current_user.admin? ) && (['Виконується'].include?(@order.status))%>
