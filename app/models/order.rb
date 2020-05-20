@@ -14,7 +14,7 @@ class Order < ApplicationRecord
 
   def self.search_by(title_or_description, category_id, city, min_price, max_price)
     min_price = -1 if min_price.empty?
-    max_price = 1000000000000 if max_price.empty?
+    max_price = 1000000000 if max_price.empty?
     where("category_id = '#{category_id}' AND
       ' ' || (LOWER(title) || ' ' LIKE '%#{title_or_description.downcase}%' OR '#{title_or_description}' IS NULL OR ' ' || (LOWER(description) || ' ' LIKE '%#{title_or_description.downcase}%' OR '#{title_or_description}' IS NULL AND ' ' || (LOWER(city) || ' ' LIKE '%#{city.downcase}%' OR '#{city}' IS NULL AND price >= #{min_price} AND price <= #{max_price} ")
   end
