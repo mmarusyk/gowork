@@ -23,7 +23,7 @@ last_names = %w[Антоненко Василенко Васильчук Вас�
   Шинкаренко Пономаренко Пономарчук Лисенко]
 
 # Generate a bunch of additional users.
-100.times do |n|
+5.times do |n|
   first_name = names.sample
   last_name = last_names.sample
   email = "example-#{n+1}@e.e"
@@ -57,10 +57,10 @@ categories = []
 end
 
 # Generate orders for a subset of users.
-users = User.order(:created_at).take(50)
-orders = []
+users = User.order(:created_at).take(5)
+statuses = %w[Активне Виконується Завершене]
 users.each do |user|
-  8.times do
+  4.times do
     title = Faker::Job.title
     description = Faker::Lorem.sentence(word_count: 150)
     skills = Faker::Job.key_skill
@@ -68,8 +68,8 @@ users.each do |user|
     duedate = Faker::Time.forward(days: 10)
     category_id = categories.sample
     price = Faker::Number.between(from: 100.0, to: 500.0).round(2)
-    status = 'Активне'
-    order = user.orders.create!(
+    status = statuses.sample
+    user.orders.create!(
       title: title,
       description: description,
       skills: skills,
@@ -79,38 +79,36 @@ users.each do |user|
       price: price,
       status: status
     )
-    orders.push order
   end
 end
 
 # Generate proposals for a subset of users.
-orders = orders.take(300)
+orders = Order.all
 orders.each do |order|
   8.times do
     content = Faker::Lorem.sentence(word_count: 50)
     duedate = Faker::Time.forward(days: 10)
     price = Faker::Number.between(from: 100.0, to: 500.0).round(2)
-    user = users.sample
+    # user = User.sample
+    user = User.offset(rand(User.count)).first
     user.proposals.create!(
       content: content,
       duedate: duedate,
       order_id: order.id,
       price: price
-    )
+    ) unless order.user_id == user.id
   end
 end
 
 # Generate reviews for a subset of users.
-proposals = Proposal.order(:created_at).take(600)
-proposals.each do |i|
-  8.times do
+orders = Order.where('status = ?', 'Завершене')
+orders.each do |i|
     score = rand(1..5)
     content = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae sed perferendis libero ducimus optio ipsum.'
     Response.create!(
       score: score,
       content: content,
-      proposal_id: i.id,
+      proposal_id: i.proposals.first.id,
       user_id: i.user_id
     )
-  end
 end
