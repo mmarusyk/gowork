@@ -18,9 +18,9 @@ class Order < ApplicationRecord
     title_or_description = '' if title_or_description.nil?
     city = '' if city.nil?
     where("category_id = '#{category_id}' AND 
-      ' ' || (LOWER(title) || ' ' LIKE '%#{title_or_description.downcase}%' OR 
-      ' ' || (LOWER(description) || ' ' LIKE '%#{title_or_description.downcase}%' AND 
-      ' ' || (LOWER(city) || ' ' LIKE '%#{city.downcase}%' AND 
+      (LOWER(title) LIKE '%#{title_or_description.downcase}%' OR 
+      (LOWER(description) LIKE '%#{title_or_description.downcase}%' AND 
+      (LOWER(city) LIKE '%#{city.downcase}%' AND 
       price >= #{min_price} AND price <= #{max_price} ")
   end
 end
