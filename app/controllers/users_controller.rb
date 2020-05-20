@@ -11,7 +11,7 @@ class UsersController < ApplicationController
              else
                User.where(activated: true).paginate(page: params[:page])
              end
-    @users = @users.where("concat(lower(first_name),' ',lower(last_name)) LIKE ?", "%#{params[:search].downcase}%").paginate(page: params[:page]) if params[:search]
+    @users = @users.where(" ' ' || lower(first_name) || ' ' || lower(last_name) || ' ' LIKE ?", "%#{params[:search].downcase}%").paginate(page: params[:page]) if params[:search]
   end
 
   def show

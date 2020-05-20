@@ -23,7 +23,7 @@ last_names = %w[Антоненко Василенко Васильчук Вас�
   Шинкаренко Пономаренко Пономарчук Лисенко]
 
 # Generate a bunch of additional users.
-5.times do |n|
+100.times do |n|
   first_name = names.sample
   last_name = last_names.sample
   email = "example-#{n+1}@e.e"
@@ -57,7 +57,7 @@ categories = []
 end
 
 # Generate orders for a subset of users.
-users = User.order(:created_at).take(5)
+users = User.order(:created_at).take(50)
 statuses = %w[Активне Виконується Завершене]
 users.each do |user|
   4.times do
@@ -85,7 +85,7 @@ end
 # Generate proposals for a subset of users.
 orders = Order.all
 orders.each do |order|
-  8.times do
+  20.times do
     content = Faker::Lorem.sentence(word_count: 50)
     duedate = Faker::Time.forward(days: 10)
     price = Faker::Number.between(from: 100.0, to: 500.0).round(2)
