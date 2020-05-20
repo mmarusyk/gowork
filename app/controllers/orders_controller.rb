@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
 
   def index
     if current_user.nil?
-      @orders = Order.all.paginate(page: params[:page])
+      @orders = Order.where('status = ?', 'Активне').paginate(page: params[:page])
     else
       @orders = Order.where('status = ? and duedate >= ? and user_id != ?', 'Активне', Time.now, current_user.id).paginate(page: params[:page])
       @orders = Order.where('user_id != ?', current_user.id).paginate(page: params[:page]) if current_user.admin?

@@ -22,6 +22,6 @@ class Order < ApplicationRecord
       # (LOWER(description) LIKE '%#{title_or_description.downcase}%' AND 
       # (LOWER(city) LIKE '%#{city.downcase}%' AND 
       # price >= #{min_price} AND price <= #{max_price} "')
-    where("category_id = ? AND (' ' || LOWER(title) || ' ' LIKE ? OR ' ' || LOWER(description) || ' ' LIKE ?) AND ' ' || city || ' ' LIKE ? AND price >= ? AND price <= ?", category_id, "%#{title_or_description}%", "%#{title_or_description}%", "%#{city}%", min_price, max_price)
+    where("category_id = ? AND (' ' || LOWER(title) || ' ' LIKE ? OR ' ' || LOWER(description) || ' ' LIKE ?) AND ' ' || city || ' ' LIKE ? AND price >= ? AND price <= ?", category_id, "%#{title_or_description.downcase}%", "%#{title_or_description.downcase}%", "%#{city.downcase}%", min_price, max_price)
   end
 end
