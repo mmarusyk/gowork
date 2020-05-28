@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @user.avatar.attach(params[:avatar])
     if @user.save
-      if @user.send_activation_email 
+      if @user.send_activation_email
       flash[:info] = 'Перевір пошту для активації аккаунту'
       redirect_to root_url
       else
