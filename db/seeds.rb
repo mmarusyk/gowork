@@ -57,10 +57,10 @@ categories = []
 end
 
 # Generate orders for a subset of users.
-users = User.order(:created_at).take(50)
+users = User.order(:created_at).take(30)
 statuses = %w[Активне Виконується Завершене]
 users.each do |user|
-  4.times do
+  20.times do
     title = Faker::Job.title
     description = Faker::Lorem.sentence(word_count: 150)
     skills = Faker::Job.key_skill
@@ -82,22 +82,55 @@ users.each do |user|
   end
 end
 
+main_users = User.take(20)
 # Generate proposals for a subset of users.
-orders = Order.all
+orders = Order.where('status = ?', 'Активне')
 orders.each do |order|
-  20.times do
+  users = main_users
+  users.each do |user|
     content = Faker::Lorem.sentence(word_count: 50)
     duedate = Faker::Time.forward(days: 10)
     price = Faker::Number.between(from: 100.0, to: 500.0).round(2)
     # user = User.sample
-    user = User.offset(rand(User.count)).first
     user.proposals.create!(
-      content: content,
-      duedate: duedate,
-      order_id: order.id,
-      price: price
-    ) unless order.user_id == user.id
+        content: content,
+        duedate: duedate,
+        order_id: order.id,
+        price: price
+      ) unless order.user_id == user.id
   end
+end
+
+# Generate proposals for a subset of users.
+orders = Order.where('status = ?', 'Завершене')
+orders.each do |order|
+  content = Faker::Lorem.sentence(word_count: 50)
+  duedate = Faker::Time.forward(days: 10)
+  price = Faker::Number.between(from: 100.0, to: 500.0).round(2)
+  # user = User.sample
+  user = User.where('id != ?', order.user_id).take(20).sample
+  user.proposals.create!(
+    content: content,
+    duedate: duedate,
+    order_id: order.id,
+    price: price
+  )
+end
+
+# Generate proposals for a subset of users.
+orders = Order.where('status = ?', 'Виконується')
+orders.each do |order|
+  content = Faker::Lorem.sentence(word_count: 50)
+  duedate = Faker::Time.forward(days: 10)
+  price = Faker::Number.between(from: 100.0, to: 500.0).round(2)
+  # user = User.sample
+  user = User.where('id != ?', order.user_id).take(20).sample
+  user.proposals.create!(
+    content: content,
+    duedate: duedate,
+    order_id: order.id,
+    price: price
+  )
 end
 
 # Generate responses for a subset of users.
