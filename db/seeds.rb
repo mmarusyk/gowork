@@ -57,7 +57,7 @@ categories = []
 end
 
 # Generate orders for a subset of users.
-users = User.order(:created_at).take(30)
+users = User.order(:created_at).take(20)
 statuses = %w[Активне Виконується Завершене]
 users.each do |user|
   20.times do
@@ -82,7 +82,7 @@ users.each do |user|
   end
 end
 
-main_users = User.take(20)
+main_users = User.take(10)
 # Generate proposals for a subset of users.
 orders = Order.where('status = ?', 'Активне')
 orders.each do |order|
@@ -108,7 +108,7 @@ orders.each do |order|
   duedate = Faker::Time.forward(days: 10)
   price = Faker::Number.between(from: 100.0, to: 500.0).round(2)
   # user = User.sample
-  user = User.where('id != ?', order.user_id).take(20).sample
+  user = User.where('id != ?', order.user_id).take(10).sample
   user.proposals.create!(
     content: content,
     duedate: duedate,
@@ -124,7 +124,7 @@ orders.each do |order|
   duedate = Faker::Time.forward(days: 10)
   price = Faker::Number.between(from: 100.0, to: 500.0).round(2)
   # user = User.sample
-  user = User.where('id != ?', order.user_id).take(20).sample
+  user = User.where('id != ?', order.user_id).take(10).sample
   user.proposals.create!(
     content: content,
     duedate: duedate,
